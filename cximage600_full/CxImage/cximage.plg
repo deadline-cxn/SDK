@@ -1,0 +1,125 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CxImage - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP78A.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "..\jpeg" /I "..\png" /I "..\zlib" /I "..\mng" /I "..\tiff" /I "..\j2k" /I "..\jasper\include" /D "WIN32" /D "NDEBUG" /D "_LIB" /D "JAS_WIN_MSVC_BUILD" /D "_CRT_SECURE_NO_DEPRECATE" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\cximage600_full\CxImage\tif_xfile.cpp"
+"D:\Projects\cximage600_full\CxImage\ximabmp.cpp"
+"D:\Projects\cximage600_full\CxImage\ximadsp.cpp"
+"D:\Projects\cximage600_full\CxImage\ximaenc.cpp"
+"D:\Projects\cximage600_full\CxImage\ximaexif.cpp"
+"D:\Projects\cximage600_full\CxImage\ximage.cpp"
+"D:\Projects\cximage600_full\CxImage\ximagif.cpp"
+"D:\Projects\cximage600_full\CxImage\ximahist.cpp"
+"D:\Projects\cximage600_full\CxImage\ximaico.cpp"
+"D:\Projects\cximage600_full\CxImage\ximainfo.cpp"
+"D:\Projects\cximage600_full\CxImage\ximaint.cpp"
+"D:\Projects\cximage600_full\CxImage\ximajas.cpp"
+"D:\Projects\cximage600_full\CxImage\ximajbg.cpp"
+"D:\Projects\cximage600_full\CxImage\ximajpg.cpp"
+"D:\Projects\cximage600_full\CxImage\ximalpha.cpp"
+"D:\Projects\cximage600_full\CxImage\ximalyr.cpp"
+"D:\Projects\cximage600_full\CxImage\ximamng.cpp"
+"D:\Projects\cximage600_full\CxImage\ximapal.cpp"
+"D:\Projects\cximage600_full\CxImage\ximapcx.cpp"
+"D:\Projects\cximage600_full\CxImage\ximapng.cpp"
+"D:\Projects\cximage600_full\CxImage\ximaraw.cpp"
+"D:\Projects\cximage600_full\CxImage\ximasel.cpp"
+"D:\Projects\cximage600_full\CxImage\ximaska.cpp"
+"D:\Projects\cximage600_full\CxImage\ximatga.cpp"
+"D:\Projects\cximage600_full\CxImage\ximath.cpp"
+"D:\Projects\cximage600_full\CxImage\ximatif.cpp"
+"D:\Projects\cximage600_full\CxImage\ximatran.cpp"
+"D:\Projects\cximage600_full\CxImage\ximawbmp.cpp"
+"D:\Projects\cximage600_full\CxImage\ximawmf.cpp"
+"D:\Projects\cximage600_full\CxImage\ximawnd.cpp"
+"D:\Projects\cximage600_full\CxImage\xmemfile.cpp"
+]
+Creating command line "cl.exe @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP78A.tmp" 
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP78B.tmp" with contents
+[
+/nologo /out:"Release\cximage.lib" 
+.\Release\tif_xfile.obj
+.\Release\ximabmp.obj
+.\Release\ximadsp.obj
+.\Release\ximaenc.obj
+.\Release\ximaexif.obj
+.\Release\xImage.obj
+.\Release\ximagif.obj
+.\Release\ximahist.obj
+.\Release\ximaico.obj
+.\Release\ximainfo.obj
+.\Release\ximaint.obj
+.\Release\ximajas.obj
+.\Release\ximajbg.obj
+.\Release\ximajpg.obj
+.\Release\ximalpha.obj
+.\Release\ximalyr.obj
+.\Release\ximamng.obj
+.\Release\ximapal.obj
+.\Release\ximapcx.obj
+.\Release\ximapng.obj
+.\Release\ximaraw.obj
+.\Release\ximasel.obj
+.\Release\ximaska.obj
+.\Release\ximatga.obj
+.\Release\ximath.obj
+.\Release\ximatif.obj
+.\Release\ximatran.obj
+.\Release\ximawbmp.obj
+.\Release\ximawmf.obj
+.\Release\ximawnd.obj
+.\Release\xmemfile.obj
+]
+Creating command line "link.exe -lib @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP78B.tmp"
+<h3>Output Window</h3>
+Compiling...
+tif_xfile.cpp
+ximabmp.cpp
+ximadsp.cpp
+ximaenc.cpp
+ximaexif.cpp
+ximage.cpp
+ximagif.cpp
+ximahist.cpp
+ximaico.cpp
+ximainfo.cpp
+ximaint.cpp
+ximajas.cpp
+ximajbg.cpp
+ximajpg.cpp
+ximalpha.cpp
+ximalyr.cpp
+ximamng.cpp
+ximapal.cpp
+ximapcx.cpp
+ximapng.cpp
+Generating Code...
+Compiling...
+ximaraw.cpp
+ximasel.cpp
+ximaska.cpp
+ximatga.cpp
+ximath.cpp
+ximatif.cpp
+ximatran.cpp
+ximawbmp.cpp
+ximawmf.cpp
+ximawnd.cpp
+xmemfile.cpp
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+cximage.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

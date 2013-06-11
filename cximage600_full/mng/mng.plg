@@ -1,0 +1,87 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mng - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7F8.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "MNG_SUPPORT_DISPLAY" /D "MNG_SUPPORT_READ" /D "MNG_SUPPORT_WRITE" /D "MNG_ACCESS_CHUNKS" /D "MNG_STORE_CHUNKS" /D "_CRT_SECURE_NO_DEPRECATE" /D "MNG_ERROR_TELLTALE" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\cximage600_full\mng\libmng_callback_xs.c"
+"D:\Projects\cximage600_full\mng\libmng_chunk_descr.c"
+"D:\Projects\cximage600_full\mng\libmng_chunk_io.c"
+"D:\Projects\cximage600_full\mng\libmng_chunk_prc.c"
+"D:\Projects\cximage600_full\mng\libmng_chunk_xs.c"
+"D:\Projects\cximage600_full\mng\libmng_cms.c"
+"D:\Projects\cximage600_full\mng\libmng_display.c"
+"D:\Projects\cximage600_full\mng\libmng_dither.c"
+"D:\Projects\cximage600_full\mng\libmng_error.c"
+"D:\Projects\cximage600_full\mng\libmng_filter.c"
+"D:\Projects\cximage600_full\mng\libmng_hlapi.c"
+"D:\Projects\cximage600_full\mng\libmng_jpeg.c"
+"D:\Projects\cximage600_full\mng\libmng_object_prc.c"
+"D:\Projects\cximage600_full\mng\libmng_pixels.c"
+"D:\Projects\cximage600_full\mng\libmng_prop_xs.c"
+"D:\Projects\cximage600_full\mng\libmng_read.c"
+"D:\Projects\cximage600_full\mng\libmng_trace.c"
+"D:\Projects\cximage600_full\mng\libmng_write.c"
+"D:\Projects\cximage600_full\mng\libmng_zlib.c"
+]
+Creating command line "cl.exe @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7F8.tmp" 
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7F9.tmp" with contents
+[
+/nologo /out:"Release\mng.lib" 
+.\Release\libmng_callback_xs.obj
+.\Release\libmng_chunk_descr.obj
+.\Release\libmng_chunk_io.obj
+.\Release\libmng_chunk_prc.obj
+.\Release\libmng_chunk_xs.obj
+.\Release\libmng_cms.obj
+.\Release\libmng_display.obj
+.\Release\libmng_dither.obj
+.\Release\libmng_error.obj
+.\Release\libmng_filter.obj
+.\Release\libmng_hlapi.obj
+.\Release\libmng_jpeg.obj
+.\Release\libmng_object_prc.obj
+.\Release\libmng_pixels.obj
+.\Release\libmng_prop_xs.obj
+.\Release\libmng_read.obj
+.\Release\libmng_trace.obj
+.\Release\libmng_write.obj
+.\Release\libmng_zlib.obj
+]
+Creating command line "link.exe -lib @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7F9.tmp"
+<h3>Output Window</h3>
+Compiling...
+libmng_callback_xs.c
+libmng_chunk_descr.c
+libmng_chunk_io.c
+libmng_chunk_prc.c
+libmng_chunk_xs.c
+libmng_cms.c
+libmng_display.c
+libmng_dither.c
+libmng_error.c
+libmng_filter.c
+libmng_hlapi.c
+libmng_jpeg.c
+libmng_object_prc.c
+libmng_pixels.c
+libmng_prop_xs.c
+libmng_read.c
+libmng_trace.c
+libmng_write.c
+libmng_zlib.c
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+mng.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

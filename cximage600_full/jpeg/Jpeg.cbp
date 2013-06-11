@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Jpeg" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jpeg\Debug\libJpeg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-g" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jpeg\Release\libJpeg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jpeg\Unicode_Debug\libJpeg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jpeg\Unicode_Release\libJpeg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="Jcapimin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcapistd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jccoefct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jccolor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcdctmgr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jchuff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jchuff.h" />
+		<Unit filename="Jcinit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcmainct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcmarker.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcmaster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcomapi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jconfig.h" />
+		<Unit filename="Jcparam.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcphuff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcprepct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jcsample.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jctrans.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdapimin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdapistd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdatadst.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdatasrc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdcoefct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdcolor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdct.h" />
+		<Unit filename="Jddctmgr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdhuff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdhuff.h" />
+		<Unit filename="Jdinput.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdmainct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdmarker.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdmaster.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdmerge.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdphuff.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdpostct.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdsample.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jdtrans.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jerror.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jerror.h" />
+		<Unit filename="Jfdctflt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jfdctfst.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jfdctint.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jidctflt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jidctfst.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jidctint.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jidctred.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jinclude.h" />
+		<Unit filename="Jmemmgr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jmemnobs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jmemsys.h" />
+		<Unit filename="Jmorecfg.h" />
+		<Unit filename="Jpegint.h" />
+		<Unit filename="Jpeglib.h" />
+		<Unit filename="Jquant1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jquant2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jutils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Jversion.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

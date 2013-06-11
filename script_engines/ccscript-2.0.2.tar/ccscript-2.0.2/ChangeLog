@@ -1,0 +1,211 @@
+Changes from 2.0.1 to 2.0.2
+- fix subroutine return stack
+- added "joined" conditionals, so one can do and or or in conditionals.
+- added call.local to reuse current stack and call.global to have top
+  level in a subroutine call.
+- fix stack memory leak on subroutine return.
+- Kerry fix for temp reallocation.
+- "cache" object type.
+
+Changes from 2.0.0 to 2.0.1
+- case now auto-breaks to endcase rather than allow multiple entry eval,
+  with new caseflag in context.
+- multiple cases without bodies between treated as "or"
+- "otherwise" added for case.
+- "case" can now be nested inside of and control various loops!  "loop" is
+  a valid alternative to "endcase".
+- "skip" skips over multi-case.
+- "ref" for dot segmented object reference alias construction.
+
+Changes from 1.99.0 to 2.0.0
+- extended case and if-then-else logicals
+- skip for local labels.
+
+Changes from 1.8.4 to 1.99.0
+- fix for new Common C++ "2"
+- "return" redirection with optional label now works correctly in all 
+  cases.
+- external modules that invoke signal no longer also advance or error.
+
+Changes from 1.8.3 to 1.8.4
+- ::onexit label for script destruction
+- "bin" support in url.
+- "gather" of syms and dump.
+- .bool descriptive.
+
+Changes from 1.8.2 to 1.8.3
+- header fixups
+- gcc 3.0 patch
+- "lifo" synonym for "stack"
+- remove entities from queues
+
+Changes from 1.8.1 to 1.8.2
+- expose cmd->getTrapMask() to derived scripts.
+- header fixup
+- "return ^label" possible to return to an event handler.
+- get trap stuff into user Interp object.
+- rollback stack on exit handler traps.
+
+Changes from 1.8.0 to 1.8.1
+- embedding pointers.
+- support for alternative label: syntax.
+- property modules can hook into inc and dec.
+- externalized "time" support into a DSO pkg.
+
+Changes from 1.7.0 to 1.8.0
+- support for Common C++ 1.9.0 and namespaces.
+
+Changes from 1.6.2 to 1.7.0
+- fix for comparison of undefined variables.
+- snprintf auditing of object size.
+- addition of temporary workspace objects.
+- universal variable properties, .len, .count, .size, .value
+- fix for some conditional parsing.
+- basic if-then alternate statement logic.
+- generic handling of DSO modules and session based "slow" handlers.
+- support for properties based DSO modules and "pkg" install with "use".
+- standard use of shared dso modules.
+- "url.pkg" dso for url related manipulations.
+- "file.pkg" dso for basic file operations.
+- local variable scopes now possible on stack frames.
+- call auto builds variable stack frame with arguments.
+- %error replaced by %script.error.  This is a major change.
+- "." notated objects always global on a "set" operation.
+  ("local" keyword not needed).
+- automatic return from call.
+- trigger objects and arm/disarm support.
+- space optimizations.
+- support for !cmd to auto-trigger script.error.
+- conditional "?" traps for processing conditional menus enabled/disabled.
+- copy-on-write for templating.
+- becomes a GNU package.
+
+Changes from 1.6.1 to 1.6.2
+- more fixes for gcc 3.0.
+- time.hour added by Aberoham.
+
+Changes from 1.6.0 to 1.6.1
+- added automatic "counter" objects.
+- dammy patch to fix return to pop loops from stack.
+- allow compilation from a C++ stream object.
+- fix for gcc 3.0 and proper namespace stuff.
+
+Changes from 1.5.2 to 1.6.0
+- added "dup" keyword.
+- added distinct symbol "typing".
+- added fifo objects, "fifo", and "post" script support.
+- added array object, "array" and "list" initializer.
+- added sequence objects, uses "post" and "sequence".
+- added stack objects, uses "post" and "stack".
+
+Changes from 1.5.1 to 1.5.2
+- added implicit repeat n times operation.
+- added getHandler for derived compilers.
+- added virtual for creation of global trap handlers.
+
+Changes from 1.5.0 to 1.5.1
+- RH 7.0 compile change from Anu.
+- set{.size} options to set command.
+- set{.value} option for implicit numeric conversion.
+- addition of - options for conditional tests (based on "test").
+- init{.size} option added.
+- basename, dirname, and fullpath added for convenient path manipulation.
+- added today{.unix, .date, .time} to get current date info.
+- added {.days, .months, .hours, .min} manipulators for inc/dec.
+- added "try" to try a list of script labels and perform goto if list
+  member exists as a script.
+- added unpack{.first#} to unpack from a point in a list.
+- added gather for locating related scripts.
+- added tryeach{.offset} to try scripts for array list.
+- added {.pre, .suf} to select
+- support for init, set, and const with sym=value as alternate syntax
+- most conditional branches now have sym=value init vars on branch.
+
+Changes from 1.4.1 to 1.5.0
+- foreach added to process list arrays.
+- pack bugfix and pack now "additive"
+- swap command added
+- alias symbol support and alias command.
+- ability to insert keyword=value tags into ccscript.
+- new getKeyword option to parse out a keyword value.
+- support for command members and .member functions.
+- elimination of elog and ilog by using member functions for slog.
+- merge of trylock, waitlock, and unlock, into lock.try, lock.wait, and
+  lock.unlock
+
+Changes from 1.4.0 to 1.4.1
+- getObject to get master script context.
+- getScript to get master script image.
+- FreeBSD package support.
+
+Changes from 1.3.2 to 1.4.0
+- alias support started.
+- data line encoding.
+- ability to fetch lines at compile time away from compiler.
+- fixed version test.
+
+Changes from 1.3.1 to 1.3.2
+- win32 build stuff.
+- use new macro for version test.
+
+Changes from 1.3.0 to 1.3.1
+- allow lead ~ in quoted names.
+- setConst and "const" keyword.
+- has and missing support multiple entries.
+- new ".requires" directive to test for required keywords.
+
+Changes from 1.2.6 to 1.3.0
+- support for Common C++ 1.3.0.
+- doxygen based documentation.
+- "has" keyword as conditional goto if "has" a specified keyword.
+
+Changes from 1.2.5 to 1.2.6
+- fix ref count setting.
+- add Redirect() member.
+- fix for stack overflow.
+- change to support use of "pop" to fix stack levels.
+
+Changes from 1.2.4 to 1.2.5
+- fixed pack
+- fixed conditional sensitivity to typos
+- added global script "locks" and new lock/unlock keywords.  A global lock
+  request for a used "lock" will call ^error.
+- better parsing of ',' in scripts.
+
+Changes from 1.2.3 to 1.2.4
+- fixes broken 1.2.3 fix!
+
+Changes from 1.2.2 to 1.2.3
+- fixed corrupt default script mask which prevented exit traps if
+  no event trap was set.
+
+Changes from 1.2.1 to 1.2.2
+- replaced fork with vfork and waitpid with wait4 for FreeBSD.  FreeBSD
+  expects to use "threaded" versions of these from pthread.h, but they are
+  defined in -lpthread rather than -lc_r.
+
+Changes from 1.2.0 to 1.2.1
+- fixes to compile and link under FreeBSD properly.
+
+Changes from 1.1.1 to 1.2.0
+- getScript made virtual.
+- new "ccscript command shell" to demonstrate ccscript programming and
+  provide a means to easily verify ccscript operation.  I don't think the
+  perl, guile, tcl, and python people have much to worry about yet...
+- new autoloop member of interp to permit disabling of automatic looping.
+- found major problem with arg checks for conditional looping.
+- inc and dec now do not require a delta (default is assumed 1)
+- freebsd packaging added.
+
+Changes from 1.1.0 to 1.1.1
+- getLast now retreived as (char *) cast.
+- compiler directives added; .sub, .define, .module, .include, and
+  .template added.
+- Support for multiple script definitions in a single file with :: scoped
+  script name resolution.
+
+Changes from 1.0.0 to 1.1.0
+- support for "once" synchronization.
+- token parser allows =, /.
+- support for passive event signaling and testing of blocked events.
+- pack and unpack moved from bayonne to native library.

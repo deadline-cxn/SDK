@@ -1,0 +1,1010 @@
+
+===============================================================================
+                           REVISION HISTORY : FMOD Ex
+             Copyright (c) Firelight Technologies, Pty, Ltd, 2004-2005
+                              http://www.fmod.org
+===============================================================================
+	      + Added feature or noticable improvement
+	      - Bug fix or something removed
+	      * Changed or Information
+===============================================================================
+
+12/08/05 4.00.35
+----------------
+
++ Added 64bit Linux (AMD64) support.
++ More VB examples.
++ Added 3D listener functions to EventSystem class.
++ Gamecube version available.
++ XCode projects added to examples in Mac release.
++ Added FMOD_DSP_ECHO_DRYMIX and FMOD_DSP_ECHO_WETMIX parameters to 
+  echo filter.
++ Echo filter 20-30% faster.
++ Added support for special "3d distance" parameter in fmod_event 
+  library.  Now you can specify envelopes in the fmod designer tool
+  to react to 3d distance as the game runs!
++ Added http basic authentication support for icecast streams that have 
+  listener authentication.
+
+- Fixed Channel::setMode not updating loop mode on streams properly.
+- Fixed Channel::setMute on channels not working when using FMOD_3D and 
+  FMOD_SOFTWARE based sound.
+- FSB bugfixes, including basicheaders support and ADPCM support.
+- FMOD_INIT_DISABLESOFTWARE fixed.
+- Fixed issues with creating and releasing new FMOD_SYSTEM/System objects 
+  while streams were playing in an existing object.
+- Fixed support for FMOD_DSP_TYPE_MIXER.
+- Removed FMOD_DSP_ECHO_FEEDBACK.  Just use FMOD_DSP_ECHO_DECAYRATIO which
+  does the same thing.
+- Fixed System::close/release related hang if the user did not release 
+  all channel groups they had created.
+
+* Changed bitfield constants to #defines.  In C you can't define global
+  constants because the C compiler doesn't regard const ints as compile time 
+  constants.   C++ does, but we have to support both C and C++ :(
+
+1/8/05 4.00.34
+--------------
+
++ Added support for S9F effect (backwards playback) in .IT format.
++ Added DSP::setInputLevels / DSP::getInputLevels.
++ Added ChannelGroup::set3DAttributes.
++ Added dsp_effectperspeaker example.  This shows some DSP network
+  manipulation.  A different dsp effect is put on each output speaker
+  and only one sound is playing!
++ Added loadfrommemory example.  This just shows how to load a file from 
+  memory rather than from disk.
++ Added FMOD_IGNORETAGS.  This enables the user to skip any redundant/extra 
+  disc access if loading from a slow medium such as CD.
+
+- Fixed VBR MP3s ending prematurely. (unless FMOD_ACCURATETIME was used).
+- Fixed playlist example not loading files with relative paths.
+- Fixed mac thread issue causing high cpu usage.
+- Fixed linux compile issue.
+- Fixed FMOD_OUTPUT_WAVWRITER on big endian platforms. (mac/xbox360/gc)
+- Fixed WinMM output initialization on Windows 98.
+- Fixed crash on XM files with bidi loops.
+- Fixed mod, s3m & xm with speed = 0 freezing the mod playback,
+  it is now ignored.
+- Fixed MIDI issues, namely corrupted and badly written midi files!
+- Removed stack overflow issue in MPEG codec.
+- FMOD_NORMAL removed.  Just use FMOD_DEFAULT.
+- Broken AAC libfaad support removed.  We will have to work out a 
+  licensing agreement for the more improved libfaad2 before continuing 
+  support for this again.
+
+* FMOD Ex now has 27 examples!
+* Changed bitfield enums to const ints so casting back to enum 
+  type isn't needed when combining flags.
+
+16/7/05 4.00.33 
+---------------
+
+FMOD Ex is now NON BETA.
+
++ Windows 64bit AMD64 build added!
++ Added good quality software reverb! FMOD_DSP_TYPE_REVERB.   
+  Now FMOD_SOFTWARE mixed voices can have reverb, AND 5.1 output!
++ Added recording support to ESD output in linux.
++ Added ChannelGroup class.  This allows channels to be grouped for parameter
+  control or effect submixing! (ie add an effect to a channel group)
++ Added channelgroups example.
++ Added submixing example.
+
+- Fixed Sound::getName not working in v32 only.
+- Hopefully last speaker issue fix.  WAVEFORMATEXTENSIBLE channelmask support
+  is seriously broken on Creative and other sound cards.  Reasons:
+  1.  Audigy NX bluescreens if you use WAVEFORMATEXTENSIBLE even for plain PCM,
+      mono, 16bit data.
+  2.  SBLive value reported to go silent if dwChannelMask is 0, even though the 
+      Microsoft docs say 0 = direct out!
+  3.  Even if you specify SPEAKER_STEREO as is recommended by Microsoft in 
+      ksmedia.h, the panning biases towards the left on some cards.
+  FMOD now only uses WAVEFORMATEXTENSIBLE for greater than stereo or 24/32bit 
+  audio data.
+- Fixed .S3M files with 16bit samples.
+- Fixed .S3M files with stereo samples.
+- Removed FMOD_CHANNEL_ALL.  To affect all channels use the new 
+  System::getChannelGroup function which by default has all channels in 
+  its group.
+- Fixed MIDI playback with some bad files.
+- Removed System::setMasterVolume / System::getMasterVolume.  To make master 
+  volume use a System::getMasterChannelGroup then call ChannelGroup::setVolume.
+- Removed Channel::setVolumeAbsolute.  To do this just create a new 
+  ChannelGroup and add the channel to it that you don't want affected.
+
+* System::playSound and System::playDSP change 'channelindex' parameter from
+  'int' to encourage more people to use FMOD_CHANNEL_FREE instead of raw 
+  channel indices.  To use a raw channel index you will have to cast the
+  number to the FMOD_CHANNELINDEX type, making it an 'advanced' feature.
+  If you are already using FMOD_CHANNEL_FREE you won't notice a difference.
+* Visual Basic only.  FMOD_System_CreateSound now removes the exinfo param,
+  and to pass it in a new function is created called FMOD_System_CreateSoundEx.
+* FMOD_OUTPUT_GETDRIVERCAPSCALLBACK parameter list changed.
+* Removed FMOD_OUTPUT_STARTCALLBACK.
+* Removed FMOD_OUTPUT_STOPCALLBACK.
+
+8/7/05 4.00.32 BETA
+-------------------
+
++ Added winamp DSP plugin support.
++ Added WAVEFORMATEXTENSIBLE style 'channelmask' variable into 
+  FMOD_CODEC_WAVEFORMAT.
++ Playlist support added. ASX, PLS. M3U and WAX.
+  Added FMOD_SOUND_TYPE_PLAYLIST, FMOD_TAGTYPE_PLAYLIST.
++ Added Synchronization point API.  These points can come from markers 
+  embedded in wav files, and can also generate channel callbacks.
+    Sound::getNumSyncPoints
+    Sound::getSyncPoint    
+    Sound::getSyncPointInfo
+    Sound::addSyncPoint    
+    Sound::deleteSyncPoint
++ Added support for FMOD_CHANNEL_CALLBACKTYPE_SYNCPOINT.
++ Added FMOD_3D_LOGROLLOFF and FMOD_3D_LINEARROLLOFF.  Now you can
+  treat min/max distance as volume = full and volume = 0 and FMOD 
+  will linearly fade between them if you choose FMOD_3D_LINEARROLLOFF.
+
++ Multichannel WAV files with alternate/non default speaker mappings now 
+  map the speaker output correctly into a sound created with FMOD_HARDWARE 
+  under directsound.  FMOD_SOFTWARE based wavs are not affected at this time.
+
+- Fixed 3rd party plugin support not seeking properly.
+- Fixed createSound with no loop flags setting sound to loop instead of oneshot
+  which should have been the default.
+- Fixed playing a sample from an end callback crash.
+- Speaker assignment fixes.
+- Soundcreate callback in a codec being called properly now for a stream that 
+  doesn't contain subsounds.
+- Removed FMOD_MPEGHALFRATE.
+
+* Renamed Channel::setOcclusion / getOcclusion to set3DOcclusion / set3DOcclusion
+  so that it groups better with the other functions.
+* Shuffled channel and sound class functions around a bit to be more logical.
+
+24/6/05 4.00.31 BETA
+-------------------
+
++ Added FMOD_ERR_MEMORY_IOP, FMOD_ERR_MEMORY_SRAM.
++ Better AIFF support including AIFC (non compressed).
++ More documentation.  API reference now 'complete'.  More refining and 
+  additions most likely need to be made!
+
+- Fixed pcmreadcallback in user streams not passing in the right sound pointer.
+- Fixed ogg vorbis not playing as a netstream.
+- Removed 'subsound' from FMOD_CODEC_GETPOSITIONCALLBACK.
+- Fixed Channel::setPosition inconsitancy when calling this function 2 times 
+  very quickly next to each other
+- Error checked getWaveData and getSpectrum for channeloffset being larger than
+  number of channels.
+
+9/6/05 4.00.30 BETA
+-------------------
+
++ Added FMOD_TIMEUNIT_MODPATTERN.
++ Added API documentation to Geometry class.
+
+- Fixed mod/s3m/xm/it/midi crash.
+- Fixed C# dsp effect enum list.
+- Fixed FMOD_CHANNEL_REUSE bug.  (and therefore the generatetone example)
+- Fixed stream flushing its buffer twice sometimes.
+- Fixed some strange cases of stream playback causing new streams to play 
+  silent.
+- Removed FMOD_DSP_TYPE_FFT that didn't actually do anything?  Maybe later.
+
+6/6/05 4.00.29 BETA
+-------------------
+
++ GameCube support added.
++ XBox 360 support added.
++ Tags embedded in http based streams now work! (As long as they are at the 
+  start of the file)
++ Sound::getName now returns name of sound by using tags or embedded song name.
++ Added name field to FMOD_CODEC_WAVEFORMAT.
++ Added Sound::setSubSoundSentence.  Gapless stream playback is now available!
++ Added FMOD_ERR_ALREADYLOCKED.
++ Added DirectX 3 support for FMOD software mixing only, so that pre-dx8 stuff
+  like VirtualPC don't fail.
++ Added 'decodebuffersize' to FMOD_CREATESOUNDEXINFO.
++ Increased code name size from 32 bytes to 256 bytes.
++ Added "Real-time stitching" example.
++ Added ability to create user sounds with subsounds.
++ More documentation.
++ .it loader several times faster on songs with stereo samples in them.
++ Added FMOD_TIMEUNIT_SENTENCE_MS, FMOD_TIMEUNIT_SENTENCE_PCM, 
+  FMOD_TIMEUNIT_SENTENCE_PCMBYTES, FMOD_TIMEUNIT_SENTENCE,
+  FMOD_TIMEUNIT_SENTENCE_SUBSOUND and FMOD_TIMEUNIT_BUFFERED.
++ Added System::setSoftwareChannels / System::getSoftwareChannels instead of
+  setting it in System::init.
+
+- Fixed memory leak in createsound/stream if 'file not found'.
+- Fixed memory leak in createsound/stream if 'format not recognized'.
+- Fixed sub-sounds (ie CDDA, DLS or FSB) not displaying their names.
+- Fixed crash on certain .IT files.
+- Fixed silent samples on .S3M files.
+- Fixed bpm issue on .S3M files.
+- Fixed file offset bug.
+- Fixed Channel::getWaveData not working for streams.
+- Fixed certain mp3 netstreams with large amounts of redundant crap at the 
+  start.
+- Fixed Channel::setMode not taking effect on software based channels.
+- Fixed Channel::getPosition flickering on userstreams and maybe rare cases
+  on normal streams.
+- Fixed System::setFileSystem.
+- Fixed FMOD_CHANNEL_REUSE now returns same handle value instead of reference counting it.
+- Fixed (XBOX only) pausing related bug.
+- Fixed Streams hanging/crashing after 24 hours of playback.
+- Removed 'levels' from Sound::setDefaults.
+- Removed 'levels' from DSP::setDefaults.
+- Removed Channel::getLevels.  Just use Channel::getWaveData(level, 1, 0) 
+  instead.  Also you could use larger values than 1 and scan the array
+  for the largest value, or maybe average them out.
+- Removed Channel::setNextSound / getNextSound.
+- Removed FMOD_OPENSTATE_LOADINGSUBSOUND.
+- Removed numsoftwarechannels from System::init.
+- Removed System::setMaxInputChannels / System::getMaxInputChannels.  This is now a 
+  paramater to System::setSoftwareFormat / System::getSoftwareFormat.
+
+* Sounds with multiple subsounds (CDDA/FSB/DLS etc) when opened as streams
+  now play as one long sentence containing every subsound, if the parent
+  sound is played.  To play just the first subsound, the user can call
+  parentsound->getSubSound(0, &subsound); and play the subsound.
+* Changed end callback behaviour to callback only when a sound ends,
+  and not when stopped by the user.
+* If FMOD_CREATESAMPLE is used with mod/s3m/xm/it, and FMOD_ACCURATETIME is not,
+  accurate time is forced so that it doesn't just fail with FMOD_ERR_MEMORY.
+* Changed FMOD_FILE_SEEKCALLBACK to only support offset.  SEEK_CUR and SEEK_END 
+  are pointless, FMOD works it out and always gives an absolute offset to the user.
+* Changed System::setStreamBufferSize / System::getStreamBufferSize parameters.  
+  Removed 'decodebuffersize'.  (now in FMOD_CREATESOUNDEXINFO)
+* Changed FMOD_TIMEUNIT_ORDER to FMOD_TIMEUNIT_MODORDER.
+* Changed FMOD_TIMEUNIT_ROW to FMOD_TIMEUNIT_MODROW.
+* Renamed CDDA example to cdplayer.  Updated some of the code and comments inside.
+* Changed System::setMinMaxHWChannels to System::setHardwareChannels.
+* Changed System::getNumHWChannels to System::getHardwareChannels.  Note! num2d
+  and num3d parameters have been swapped around.
+* Changed System::setOutputPlugin   / System::getOutputPlugin to 
+          System::setOutputByPlugin / System::getOutputByPlugin
+* Changed System::setOutputFormat / System::getOutputFormat to 
+          System::setSoftwareFormat / System::getSoftwareFormat and added a 
+          maxinputchannels parameter.
+* Changed FMOD_OUTPUT_INITCALLBACK to use void *extradriverdata instead of
+  const void *hwnd.
+
+
+9/5/05 4.00.28 BETA
+-------------------
+
++ Added 'userdata' member to FMOD_DSP_DESCRIPTION structure.
+
+- Fixed FMOD_OPENMEMORY not working after beta 27 file offset change.
+- Removed FMOD_DSP structure.
+- Fixed pointer in DSP callbacks not being the same as the one created with.
+
+6/5/05 4.00.27 BETA
+-------------------
+
++ Added 'controlpanelspeakermode' to System::getDriverCaps.
++ Added C# and VB versions of the 'effects' example.
+
+- Fixed sounds returning invalid handle if a system object was released 
+  then re-created.
+- Fixed Sound::seekData giving wrong results.
+- Fixed file offset / length bug in System::createSound.
+- Fixed sounds with no FMOD_SOFTWARE or FMOD_HARDWARE specified crashing
+  when being swapped out in a virtual channel.
+
+* Changed System::getDriverCaps to add an extra parameter.
+* Changed FMOD_SPEAKERMODE_NONE to FMOD_SPEAKERMODE_RAW.
+* Changed FMOD_OUTPUT_GETDRIVERCAPSCALLBACK to return the platform specific 
+  speaker setting based on the control panel or operating system.
+
+3/5/05 4.00.26 BETA
+-------------------
+
++ Implemented Sound::setLoopCount / Sound::getLoopCount and 
+  Channel::setLoopCount / Channel::getLoopCount.  Works on static samples
+  as well as streams!
++ Added FSBankEXlib.  Available in Multithreaded, and Multithreaded DLL builds.
++ Added a few more docs.
+
+- Fixed DSP crash on DSP units played with System::playDSP.
+- Fixed handling of wav files with bad and corrupted loop points stored within
+  them.
+
+2/5/05 4.00.25 BETA
+-------------------
+
++ Added FSBankEx.  FSBankEx uses the FMOD Ex engine for loading, so it could
+  support file format plugins.  It also supports multichannel wavs when 
+  encoding multichannel interleaved FSB files!  (no more needing 6 mono wavs 
+  or 3 stereo wavs for a 5.1 fsb.  Just one 6 channel wav/ogg etc will work).
++ Added FSB encryption.  Now sound designers can 'mangle' their data files
+  and only with the correct key on the application side will the correct
+  data be playable.
++ Sound::setLoopPoints / getLoopPoints and Channel::setLoopPoints / 
+  getLoopPoints fully implmented for samples and streams.  FMOD_HARDWARE
+  sounds that are samples do not support this.
++ Added makefile to linux release, to allow for "make install".
+
+- Fixed Channel functions returning invalid handle error from channel end 
+  callbacks.
+- Fixed close crash when reusing a channel that was playing a DSP unit.
+- Fixed handling of truncated wav files.
+- Fixed delphi headers.
+
+* Documentation cleanups, mainly in the 'get' functions.
+
+
+28/4/05 4.00.24 BETA
+--------------------
+
++ Added Channel::setNextSound.  This allows a channel to switch from one
+  sound to another mid playback without gaps.  Currently disabled.
++ FMOD_CREATESAMPLE added to FMOD_FLAGS to force codecs that open as a stream 
+  by default now (mod/s3m/xm/it/midi) to load as a sample.
+
+- Fixed streams smaller than the file buffer size playback bug.
+- Fixed Channel::setOcclusion.
+- Fixed Channel::setVolumeAbsolute.
+- Changed VB header's boolean types to Int to be more binary compatible with 
+  the FMOD dll.
+
+* Changed mod/s3m/xm/it/midi to load as a stream by default even when you 
+  call createSound.  To many people are trying to decode whole mod files into
+  memory and wondering why they run out of memory.  
+  To force the 'decode into memory' behaviour, the new FMOD_CREATESAMPLE can 
+  be used.
+* Changed channel handle passed into channel callbacks from being different 
+  from channel handle returned from playsound, to be the same.
+
+21/4/05 4.00.23 BETA
+--------------------
+
+- Fixed file system bug.
+- Fixed crash when calling play or setposition when a stream was playing.
+
+20/4/05 4.00.22 BETA
+--------------------
+
+- Fixed virtual voice swap callback.  Voices that are real now also get a 
+  callback when you first set the callback so you can accurately track which 
+  start off real and which start off virtual, then what happens after that.
+- Fixed channel end callback.  Voices that were stolen/reused before 
+  System::update was called weren't getting their callback.
+- Improved channel selector to stop it stealing playing channels if other 
+  channels had just stopped (and System::update hadn't been called yet).
+
+19/4/05 4.00.21 BETA
+--------------------
+
++ Added backwards playback support.  Negative setfrequency is accepted with
+  FMOD_SOFTWARE sounds only, and samples (not streams) only.
++ Added FMOD_SOUND_NONBLOCKCALLBACK callback to FMOD_CREATESOUNDEXINFO
+  to allow a user to get a callback when a sound has finished loading.  
+  Used with FMOD_NONBLOCKING flag.  Error code is passed in as a parameter.
++ Added DSP::setBypass / DSP::getBypass.  This allows the user to disable
+  the effect of a dsp unit, without stopping all of its inputs, like 
+  DSP::setActive would.
+
+- Macintosh thread usage changed from Carbon to Posix for mach-o build.
+  Now streams wont stutter when using the OSX gui!
+- Fixed a lot of crashes to do with virtual voices and streams.  (not 
+  nescessarily combined).  This should be a LOT more stable now.
+- Fixed squelching/chirping on mp3s and file errors on other formats.
+- Fixed stream stuttering on certain machines/file formats by increasing
+  stream decode buffersize default from 200ms to 400ms.
+- System::createSound now correctly returns FMOD_ERR_FILENOTFOUND instead of 
+  FMOD_ERR_FORMAT when failing to open the file.
+- Fixed FMOD_NONBLOCKING causing a memory leak and not working if the sound 
+  was a static sample.
+
+* Changed System::setStreamBufferSize / System::getStreamBufferSize so user 
+  can now specify the decode buffer size and file buffer size separately.
+* Stream default file buffersize reduced from 64k to 16k to save memory.
+  For net streams/cdda, 64k or so would be recommended.
+
+
+13/4/05 4.00.20 BETA
+--------------------
+
++ Added Sound::set3DConeSettings / Sound::get3DConeSettings
+        Channel::set3DConeSettings / Channel::get3DConeSettings
+        Channel::set3DConeOrientation / Channel::get3DConeOrientation.
++ Increased speed of virtual voice swapping when going from emulated<->real.
+
+- Fixed FMOD_SOFTWARE + FMOD_3D and streams not working.
+- Fixed crash in System::update if virtual channels were being swapped that
+  were streams.
+- Fixed FMOD_OPENONLY crash if stream was started with no seek.
+- Fixed bug in System::getNumDrivers if it was called after System::init
+  without having called System::getNumDrivers or System::getDriverName 
+  before System::init first.  (FMOD
+- Removed Geometry::flush.  Use System::update.
+- Fixed glitch in filesytem causing WMA to fail opening and WAV to click.
+- Added protection for if a user reads all of a file with Sound::readData
+  then mistakenly starts the stream looping, causing a hang.
+- Fixed crash when releasing a stream while it was playing.
+- Fixed delphi header mistakes.
+
+8/4/05 4.00.19 BETA
+-------------------
+
++ Added buffer underrun detection!  No more stream stuttering!  You can
+  now detect when underrun occurs and mute the stream or do whatever you 
+  want with it.  Netstream example has been updated to reflect this.
++ Added Geometry::save to save out an object to a binary format.
++ Added System::loadGeometry to load an object from a binary format.
++ Added recording support for FMOD_OUTPUTTYPE_COREAUDIO on mac.
++ Added some documentation.
+
+- Fixed stream crash.
+
+* Changed Sound::getOpenState to also have 'percentbuffered' and 'starving'
+  parameters.  This is good for watching network streams buffer and also
+  for error handling when a stream is starved.  
+* Changed System::setStreamBufferSize to pass unsigned int instead of int.
+* Changed System::getStreamBufferSize to pass unsigned int * instead of int *
+  and now the sizetype is a pointer.
+* Changed FMOD_DSP_SEEKCALLBACK to FMOD_DSP_SETPOSITIONCALLBACK.
+
+5/4/05 4.00.18 BETA
+-------------------
+
++ New streaming code to hugely reduce memory usage compared to FMOD 3, and
+  also remove cpu 'spikes'.  FMOD now has a smooth consistant cpu usage while
+  streaming, and uses a fraction of the memory that it used to for compressed
+  formats.
++ Sound::getOpenState now returns an error code that reflects what went 
+  wrong in the async open thread (FMOD_NONBLOCKING) if there was an error.
++ Updated netstream example to show new openstate functionality.
++ Added 'userdata' member to FMOD_CREATESOUNDEXINFO.  This allows the use
+  of Sound::getUserData when getting pcmreadcallback and pcmsetposcallback
+  during System::createSound.
++ Added overloaded System::createSound to C# so FMOD_CREATESOUNDEXINFO isn't
+  needed if not wanted.
++ Added recording support for FMOD_OUTPUTTYPE_SOUNDMANAGER on mac.
+
+- Fixed Sound::getOpenState not returning FMOD_OPENSTATE_CONNECTING or 
+  FMOD_OPENSTATE_BUFFERING.
+- Fixed crash in System::close if user tried to released a sound that was
+  still in the middle of opening with FMOD_NONBLOCKING.
+- Stopped denormalized floats getting into the lowpass/highpass/eq filters
+  causing huge cpu usage or exceptions.
+- Removed FMOD_FILE_TELLCALLBACK.
+- Fixed MP3 codec so that it doesnt skip the first frame or take extra time
+  than it needs to.
+- Fixed speaker levels not working because 3D code was resetting the levels
+  on 2D sounds.
+- Fixed FMOD_CREATESOUNDEXINFO not being used in FMOD_NONBLOCKING created
+  sounds, making things like non-blocking memory load calls fail.
+- Fixed MinGW and CygWin linking errors on windows.
+
+* Changed FMOD_FILE_OPENCALLBACK to add filesize parameter.  This is better
+  than having FMOD do a seek end, tell, then seek 0, because the length might
+  already be present in a TOC or other filesystem structure.
+* Changed System::setFileSystem to remove FMOD_FILE_TELLCALLBACK.
+* Changed 'filelength' to 'length' in FMOD_CREATESOUNDEXINFO.
+* Changed FMOD_CODEC to remove FMOD_FILE_TELLCALLBACK filetell.
+* Changed FMOD_CODEC to provide filesize.
+
+1/4/05 4.00.17 BETA
+-------------------
+
++ Added "FMOD Designer" sound tool.
++ Added multichannel output support to Mac build for surround sound.
+  (FMOD_OUTPUTTYPE_COREAUDIO only).
++ Added recording support to ALSA and OSS modes on linux.
++ Added VBR Xing header support.  Now Xing encoded MP3's won't need 
+  FMOD_ACCURATETIME to get accurate seeking and length of VBR mp3's.
++ Added fmodex_bc.lib import library for borland C.  C++ linking not supported.
++ Added libfmodex.a import library for MinGW/CygWin.  C++ linking not supported.
++ Implemented setMinMaxHWChannels.
++ Added Channel::getAudiblity.  This is just the audible volume of the channel
+  by multiplying 3d volume, volume, master volume and geometry occlusion 
+  together.
++ Added FMOD_TIMEUNIT_RAWBYTES for Sound::getLength and Channel::getPosition
+  only.
++ More functions documented, still not there yet!
+
+- Fixed Virtual voice support for static sounds and streams.
+- Fixed race condition on Channel::setPan which causes NaN's and sound 
+  dropping out.  (FMOD_SOFTWARE only).
+- Removed Channel::setTime / getTime.  Use Channel::setPosition / getPosition
+  with FMOD_TIMEUNIT_MS instead.
+- Tremor fixed point ogg vorbis codec removed.
+- Fixed linux build not running in anything but root mode.
+- Fixed crash on bidi/pingpong music loops in samples.
+- Fixed stereo sounds not loading as FMOD_3D like they used to. 
+  (they automatically downmix to mono as they stream or load.)
+- VirtualVoices example memory GDI memory leak fixed.
+- Fixed divide by 0 in highpass and bandpass and possibly lowpass filters.
+- Removed FMOD_INIT_DSOUND_GLOBALFOCUS.  Now it is global by default, and you
+  specify a hwnd if you don't want it global.
+- Fixed sounds with subsounds and Sound::seekData seeking to entry 0 each time
+  instead of the entry they are supposed to be associated with.
+- 8bit PCM wav streams/sound loading - huge speedup.
+
+* Changed pan from 0.0 -> 1.0 to -1.0 -> +1.0.
+* Changed distance factor to reflect documentation.  Currently it was taking 
+  1/3.28 for feet instead of 3.28 as it should have.
+* Min and Max distance now defaults to distance factor when a sound is created.
+* Changed setMinMaxHWChannels changed from int min, int max to 
+  int min2d, int max2d, int min3d, int max3d.
+* Changed FMOD_VBRACCURATE to FMOD_ACCURATETIME.  Now MOD/S3M/XM/IT can share
+  this flag.  FMOD will quickly and quitely play the mod until it finds the same
+  point in the song again (a where the song loops) and count that as the length
+  of the song.
+* Changed Sound::getLength to use position and FMOD_TIMEUNIT parameter instead
+  of 3 hardcoded ms, pcm, pcmbytes values.  This now allows things like number
+  of mod/s3m/xm/ut orders in a song to be reported for example.
+* Changed 3D example to have changable distance factor.
+
+
+3/3/05 4.00.16 ALPHA
+---------------------
+
++ Added more tutorials to documentation.
++ Added WinMM recording to FMOD_OUTPUT_WINMM output mode.
++ Added VST plugin support.
++ Added System::lockDSP and System::unlockDSP in case the user wants to stop 
+  FMOD's dsp engine while doing a complex dsp network adjustment (ie moving
+  multiple units around and disconnecting / connecting).
++ Implemented System::getHandle for all platforms.
++ Added System::createDSPByIndex.
++ Added DSP::setParameter / getParameter.
++ Added DSP::getNumParameters.
++ Added DSP::getParameterInfo.
++ Added DSP::showConfigDialog.
++ Added DSP::getInfo.
++ Added dsp_gain example to show how to write a simple DSP plugin.
++ Added effect example to show how to use FMOD's built in effects.
++ Added dspviewer example to show how to use dynamic plugins, and also
+  draw a spectrum and waveform using System::getSpectrum, System::getWaveData.
++ Added System::getWaveData / Channel::getWaveData for plotting the 
+  waveform of the playing audio.  Much simpler than creating a dsp unit etc.
+
+- Fixed ParamEQ filter and also fixed a heap of other filters to be more 
+  tolerant of extreme parameters.
+- Removed Channel::setWeight / getWeight.
+- Removed 'weight' from DSP::setDefaults / getDefaults.
+- Removed 'weight' from Sound::setDefaults / getDefaults.
+- Removed DSP::setParameters / getParameters.
+- Removed System::getDSP.
+- Removed DSP::getName
+- Removed DSP::getFormat
+- Removed reverb unit from header for now as it was disabled anyway.  
+- Fixed crash in System::close.
+- Fixed crash playing .it files.
+- Fixed .it loader.
+- Fixed crash when using fmodexp.dll
+- Fixed crash on some stream files.
+- Fixed sounds stopping if DSP::release was called during playback.
+- Fixed hang in MIDI loader on some files.
+- Fixed mistake in XM loader so stereo and 16bit samples sound ok now.
+- Fixed stream thread shutting down if second System object was created then 
+  closed.
+- Fixed record system getting out of sync if recordStop then recordStart were 
+  called.
+
+* DSP parameters are now dynamic, meaning unknown DSP plugins can be added and
+  their parameter lists can be enumerated.
+* Changed System::setMasterVolume / getMasterVolume from int 0-1024 to float 0 to 1.
+* Changed Sound::setDefaults / getDefaults parameters from int 0-1024 to float 0 to 1.
+* Changed Sound::setVariations / getVariations parameters from int 0-1024 to float 0 to 1.
+* Changed Channel::setVolume / getVolume from int 0-1024 to float 0 to 1.
+* Changed Channel::setFrequency / getFrequency from int to float.
+* Changed Channel::setPan / getPan from int 0-1024 to float 0 to 1.
+* Changed Channel::setSpeakerMix / getSpeakerMix from int 0-1024 to float 0 to 1.
+* Changed Channel::setSpeakerLevels / getSpeakerLevels from int 0-1024 to float 0 to 1.
+* Changed Channel::setVolumeAbsolute from int 0-1024 to float 0 to 1.
+* Changed Channel::getLevels parameters from int 0-1024 to float 0 to 1.
+* Changed FMOD_OUTPUT_TYPE to FMOD_OUTPUTTYPE and all the types inside renamed.
+* Changed DSP::setInputMix / getInputMix parameters from int 0-1024 to float 0 to 1.
+* Changed DSP::setDefaults / getDefaults parameters from int 0-1024 to float 0 to 1.
+* Changed System::getSpectrum / Channel::getSpectrum to take number of floats being 
+  written rather than number of samples being analyzed. (which is always 2x the data 
+  written to the buffer)
+
+27/1/05 4.00 alpha 15
+---------------------
+
++ Added Geometry API.  
++ Added IASIG I3DL2 Reverb support.  Now some non EAX compatible cards can get
+  hardware reverb with the same fmod interface!.
++ Added Echo effect.  (FMOD_DSP_TYPE_ECHO, FMOD_DSP_PARAM_ECHO)
++ Added Flange effect.  (FMOD_DSP_TYPE_FLANGE, FMOD_DSP_PARAM_FLANGE)
++ Added Distortion effect.  (FMOD_DSP_TYPE_DISTORTION, FMOD_DSP_PARAM_DISTORTION)
++ Added Normalization filter.  (FMOD_DSP_TYPE_NORMALIZE, FMOD_DSP_PARAM_NORMALIZE)
++ Added ParamEQ filter.  (FMOD_DSP_TYPE_PARAMEQ, FMOD_DSP_PARAM_PARAMEQ)
++ Added Pitch shifting filter.  (FMOD_DSP_TYPE_PITCHSHIFT, FMOD_DSP_PARAM_PITCHSHIFT)
++ Added Chorus effect.  (FMOD_DSP_TYPE_CHORUS, FMOD_DSP_PARAM_CHORUS)
++ Added virtual voices example.
++ Added geometry example.
++ Added System::createStream.  This is identical to System::createSound but
+  just with the FMOD_CREATESTREAM flag added in.  It is to make it more obvious
+  so people don't go loading huge files into memory when they should be 
+  streamed by accident.
++ Added System::createStream which is exactly the same as System::createSound
+  but with the FMOD_CREATESTREAM mode bit added in, because I know people are
+  going to forget to add the flag unless it is right in front of them!
++ Added Visual Basic interface.
+
+- Fixed DSP related issues with units having multiple outputs.
+- Removed "outputfrequency" from FMOD_DSP_PARAM_LOWPASS
+- Removed "outputfrequency" from FMOD_DSP_PARAM_LOWPASS2
+- Removed "outputfrequency" from FMOD_DSP_PARAM_OSCILLATOR
+- Priority and weight now work.
+- Voices are now swapped based on volume and 3d volume.
+- Fixed FMOD_SOFTWARE based 3d sounds appearing loud between System::playSound
+  when paused and System::update if the sound was positioned far away.
+
+* Renamed "wetness" parameter in DSP::setInputMix to "volume".
+
+6/1/05 4.00.14 ALPHA
+--------------------
+
++ Added EAX2, EAX3 and EAX4 support.  If the card supports EAX4, multiple 
+  reverb environments at once are possible.
++ Added 2 lowpass resonance filters. (FMOD_DSP_TYPE_LOWPASS, FMOD_DSP_TYPE_LOWPASS2)
++ .IT music support now supports resonant lowpass filtering.
++ Added FMOD_INIT_DISABLESOFTWARE to save memory if software mixing isn't 
+  needed.
++ Added FMOD_ERR_NEEDSSOFTWARE if a codec or feature is used that requires 
+  software mixing.
++ Added missing codec_dls.dll to make the plugin version of codec_midi.dll work.
+  DLS files can also be loaded without MIDI as well like a multi-sound bank and 
+  Sound::getSubSound can be used to play or get information on each sound.
++ Added System::addDSP.
++ Added Channel::addDSP.
++ Added FMOD_ERR_DSP_TOOMANYCONNECTIONS.
++ Added DSP::remove to unlink DSP effects added with System::addDSP or 
+  Channel::addDSP
++ Added maxpolyphony to FMOD_CREATESOUNDEXINFO structure to reduce memory/cpu
+  consumption on formats like mod/s3m/xm/it/midi if they use dynamic channel
+  allocation. (currently only .it and .mid do this)
++ Added DSP::reset to allow a user to reuse a filter but to reset it to its 
+  initial state.
++ Added FMOD_DSP_RESETCALLBACK to FMOD_DSP_DESCRIPTION structure.
++ Added System::isRecording
++ Enabled Channel::getSpectrum
+
+- Fixed midi codec crash if 0 software channels were specified.
+- Fixed click on end of one shot samples in FMOD_SOFTWARE mode.
+- Fixed small memory leak in .IT codec.
+- Fixed System::close crash.
+- Fixed corruption in mp3 codec.
+- Fixed loop point clicking on PCM based hardware sounds on XBox.
+- Fixed min and max 3d distance being ignored on XBox.
+- Fixed streams not allowing 3d attributes or mode to be changed.
+
+* changed System::loadPlugin parameters.
+* changed System::createDSPByID to System::createDSPByType
+* changed FMOD_DSP_DESCRIPTION::type to FMOD_DSP_DESCRIPTION::category
+* changed FMOD_DSP_TYPE to FMOD_DSP_CATEGORY
+* changed FMOD_DSP_ID to FMOD_DSP_TYPE
+* changed FMOD_DSP_READCALLBACK length parameter from a pointer to a normal int.
+* MOD/S3M/XM/IT panning made linear to sound more spatialized, and more like 
+  modplug tracker which doesnt use constant power panning like it should.
+* Changed System::recordStart to add a bool loop parameter.
+* Changed mod/s3m/xm/it/midi to target FMOD_SOUND_FORMAT_PCM16 instead of 
+  FMOD_SOUND_FORMAT_PCMFLOAT if FMOD_HARDWARE is specified.
+* Changed FMOD_DSP_FFT_WINDOW_TYPE to FMOD_DSP_FFT_WINDOW
+
+17/12/04 4.00.13 ALPHA
+----------------------
+
+- Fixed FMOD_INIT_3D_RIGHTHANDED flag.
+- MIDI plugin corruption fixed.
+- Fixed C version of ripnetstream.
+- Clarified mode flags.  Now FMOD_2D and FMOD_HARDWARE are default.  
+  FMOD_3D always overrides FMOD_2D and FMOD_SOFTWARE always overrides FMOD_HARDWARE.
+- AAC will now open in a non accurate CBR calculation mode like MP3 does.  Use
+  FMOD_VBRACCURATE to get an accurate System::getLength / System::setTime.
+
+* To use fmodexp.dll in C# use the new fmodp.cs.  It is the same as fmod.cs 
+  it just refers to a different DLL.
+
+
+16/12/04 4.00.12 ALPHA
+----------------------
+
++ Added DLS MIDI support!  FMOD Ex now has its own native cross platform MIDI
+  playback codec which does not rely on any external libraries such as 
+  DirectMusic.  DLS 1 spec is now supported.  SF2 will come later.
++ Added AAC support.
++ Added C# Interface and examples!
++ Added FMOD_CREATESOUNDEXINFO structure to go with new System::createSound.
++ Added / Renamed some init flags to FMOD_INIT_DSOUND_GLOBALFOCUS, 
+  FMOD_INIT_DSOUND_DEFERRED, FMOD_INIT_DSOUND_HRTFNONE, 
+  FMOD_INIT_DSOUND_HRTFLIGHT, FMOD_INIT_DSOUND_HRTFFULL.
++ Added FMOD_UNICODE to mode flags to allow unicode filenames to load.
++ FMOD_3D + FMOD_SOFTWARE now supports multi-speaker output!  Use 
+  System::setSpeakerMode first of course.
++ Added System::setSpeakerPosition.
++ Added System::getSpeakerPosition.
+  These 2 functions allow you to physically describe the location of your
+  speakers and FMOD will skew panning based on this when in 3D!
++ Added FMOD_CAPS_HARDWARE_EMULATED flag.
++ System::getDriverCaps implemented.
++ Documented a lot more functions, and added "TERMINOLOGY / BASIC CONCEPTS"
+  page to the documentation.
++ Implemented System::getOutputHandle
++ Implemented System::setRecordDriver
++ Implemented System::getRecordDriver
++ Implemented System::getRecordNumDrivers
++ Implemented System::getRecordDriverName
++ Added System::getRecordHandle
++ Added recordStart
++ Added recordStop
++ Added recordGetPosition
+
+- Removed System::createSoundEx
+- min/max distance working properly for hardware 3d sounds.
+- multispeaker stuff for hardware 3d sounds working again.
+- Fixed Channel::setPan not working on hardware 2d DirectSound buffers.
+- Fixed divide by 0 crash if a codec set the blockalign to 0.
+- Removed FMOD_SPEAKERMODE_PROLOGIC2 and made FMOD_SPEAKERMODE_PROLOGIC use
+  Prologic 2 encoding by default.  It will work on a Prologic 1 decoder as 
+  well so having 2 is redundant.
+- Fixed multichannel sound not working on some soundcards.
+- Fixed .it pitch envelope bug.
+- Removed FMOD_CREATESTATIC flag.  This is the default behaviour anyway.
+- Removed FMOD_OPENRECORD flag.
+- Fixed Sound::readData not reading 100% of the file.
+
+* Renamed FMOD_MPEGACCURATE to FMOD_VBRACCURATE so more VBR formats that dont
+  store their PCM sample length somewhere can use this flag (like AAC)
+* Changed parameters in System::createSound to take a pointer to a 
+  FMOD_CREATESOUNDEXINFO structure.  To behave like the old System::createSound
+  just pass 0 or NULL as this parameter.
+* Worked around a bluescreen bug in creative labs driver due to them not 
+  supporting WAVEFORMATEXTENSIBLE properly.
+* Delphi header updated.
+
+10/11/04 4.00.11 ALPHA
+----------------------
+
++ Added output plugin support!  Now users can add their own output modes for 
+  FMOD Ex to software mix into.
++ Added DSound plugin.
++ Added WinMM support and plugin.
++ Added ASIO support and plugin.
++ Added NoSound support and plugin.
++ Added WavWriter support and plugin.  Supports multichannel and multiformat
+  wav files (ie 6 channel 32bit floating point wavs can be written from the
+  FMOD mixer output).  Supply a filename through 'hwnd' parameter.
++ Added System::setOutputPlugin / System::getOutputPlugin
++ Added System::getNumPlugins, System::getPluginInfo, System::unloadPlugin.
++ Added plugins/output_mp3 example.  Uses lame_enc.dll.  Realtime output of 
+  FMOD Ex is encoded and written to an mp3 file!
++ System::setSpeakerMode now sets output channel count to appropriate value.
++ Channel::setSpeakerMix / Channel::getSpeakerMix / Channel::setSpeakerLevels /
+  Channel::setSpeakerLevels added / implemented.
++ System::setMasterVolume now ignores absolute channels set with 
+  Channel::setVolumeAbsolute properly.
++ Added useplugins example.
++ Added multispeakeroutput example.
++ A bit more documentation added.
+
+- Fixed crash in certain .IT songs.
+- MOD, S3M, XM, IT plugins now about 8k smaller.
+- fmodexp.dll now 5k smaller due to Directsound Output being moved into plugin.
+- removed limitation on 2d directsound buffers using same min/max frequency 
+  limitation as 3d directsoundbuffers.
+- Invalid handles for channels that have stopped or been stolen now return 
+  0 false or null in information functions to reduce accidental user bugs.
+
+24/10/04 4.00.10 ALPHA
+----------------------
+
++ Added .S3M codec.  Supports total click removal, 3D S3Ms, S3M as samples, 
+  100% accuate length calculation etc.
++ Added .XM / .OXM (ogg XM) codec.  Supports total click removal, 3D XMs, 
+  XM as samples, 100% accuate length calculation etc.
++ Added .IT codec.  Supports total click removal, 3D ITs, IT as samples, 
+  100% accuate length calculation etc.
++ Enabled FMOD_LOOP_BIDI support for software voices.
++ Added ability to let user decide what buffer format and frequency MOD/S3M/XM/IT 
+  should decode to.  By default it is the same as the output frequency and 
+  FMOD_SOUND_FORMAT_PCMFLOAT.   Simply specify a sound format and/or frequency 
+  in System::createSoundEx.
++ Added 'multiplesoundcard' example to show easy multiple sound card support.
+
+- Removed click on looping FMOD_SOFTWARE samples from loopstart.
+- Removed random crackles from MOD/S3M/XM/IT support due to thread concurrency
+  issue.
+- Fixed Sound::setMode forcing sound to 3D if FMOD_2D or FMOD_3D wasn't 
+  specified.
+- Fixed Sound::getLength support for large files returning the wrong value.  
+  WAV and AIFF were affected.
+- Fixed crash on Sound::release with sounds with tags that werent created as a 
+  stream.
+- Worked around a DirectSound bug (hello Microsoft!).  IEEE 32bit floating point
+  buffers set to volume 0 would make a horrible buzzing noise.  Changed dsound
+  code to be 'almost silent' but not quite for float buffers, but to users ears
+  it will be silent.  Seemed to only happen if playback buffer frequency is the 
+  same as the frequnecy the source buffer was created in.
+- Fixed crash on FMOD_SOFTWARE based sounds being played at extremely high speeds 
+  and with small loops.
+- Fixed Directsound enumeration only enumerating 1 device.
+- Updated RAW codec plugin example.
+
+* Changed FMOD_CODEC_OPENCALLBACK to take in usermode, userfrequency, userformat.
+  These parameters allow the codec to know what the user passed in via 
+  Sound::createSound
+* System::getNumDrivers and System::getDriverName now allowed to be called after
+  System::init.
+
+15/10/04 4.00.09 ALPHA
+----------------------
+
++ Added .MOD codec.  Improvements on FMOD 3 include.
+  - Click free!  Clicks from sounds that cut each other off on the same 
+    MOD channel are removed, for 100% click removal.
+  - Sound::getLength gives the exact length of a MOD in milliseconds no matter 
+    what!  Even backwards, infinite, or complicated looping MODs are no challenge.  
+  - Channel::setPosition / Channel::setTime allows sample accurate seeking
+    into a MOD, by time.  FMOD 3 only allowed seeking by 'MOD order'.
+  - MODs can be loaded as a sample!  You can load a mod as a sample, then grab 
+    the PCM buffer using Sound::lock/Sound::unlock and write it to a .wav file if 
+    you want!
+  - MODs can be played on hardware voices!
+  - MODs can be played in 3D!  They can be panned, volume scaled or even 
+    frequency adjusted.  They can do anything a normal stream could do.
+
+- Removed click when FMOD_SOFTWARE based sound had its volume set to 0.
+- Plugged DirectSound memory leak.
+
+7/10/04 4.00.08 ALPHA
+---------------------
+
++ Added System::playDSP added.  Now tone generator DSP units can be played 
+  instantly without having to do any DSP network connection / disconnection.
++ Memory usage dropped by about 42kb.  After System::init with 100 virtual 
+  voices and software mixing turned off, total memory usage is about 54kb.
++ Updated ripnetstream example.  Rip shoutcast etc radio stations to mp3 files!
+  Supports Artist / Title tag broadcasts to name each mp3 by.
++ Added generatetone example.  Shows how to play generated sounds without
+  loading a sample!
++ Added FMOD_CHANNEL_REUSE so a channel can be re-used instead of a new 
+  channel being selected.  The channel re-used is the one passed into 
+  System::playSound / System::playDSP.
++ Added FMOD_CHANNEL_ALL support.  Use System::getChannel and use this 
+  handle as a channel handle that will affect all channels.
++ 'dataoffsetbytes' parameter implemented for System::createSoundEx.
++ Added FMOD_MPEGSEARCH so FMOD will search right through an MP3 for a correct 
+  header if the file is corrupt.  By default it searches for 4096 bytes 
+  then gives up.
+
+- Fatal net stream errors now terminate stream playback.
+- Fixed System::attachFileSystem not being present in import library.
+- Fixed Sound::getFormat not returning the correct sound type.
+- Fixed netstreams always ending after about 137 minutes.
+- Fixed clicking/crackling if a filter DSP callback tried to change 
+  the output length/channels.  Filter units can now not change the length 
+  or channels going out.
+
+* Net tags that don't contain any new information (such as regular shoutcast 
+  title/artist broadcasts that get transmitted every few seconds) are now 
+  ignored.  New tags are only available via FMOD if they are in fact 
+  unique.  Saves end user having to do string compares in their own app.
+* DirectSound volume and panning now smoother / more accurate.
+
+
+1/10/04 4.00.07 ALPHA
+---------------------
+
++ Multi-channel ogg supported.
++ Added System::attachFileSystem to 'ride' on top of FMOD's file calls.
++ Added 'ripnetstream' example to show how to rip a stream from a url
+  to a file using System::attachFileSystem.
+
+- vorbis comment corruption causing ogg problems fixed.
+- Fixed non seekable streams such as internet streams trying to loop or 
+  exhibiting weird behaviour if System::playSound while it was already 
+  or System::setTime.
+- Small streams (streams smaller than the stream buffersize) not 
+  restarting fixed.
+- Multichannel sounds playing on stereo output are now not scaled down
+  by the number of channels and just played at full volume.
+- Fixed click at end of software based sounds when playing more than 1
+  at once.
+
+
+28/09/04 4.00.06 ALPHA
+----------------------
+
++ Added System::getSpectrum.  This spectrum analysis function is FAR more 
+  advanced than FMOD 3's function.  It has the following benefits.
+  - Allows 128,256,512,...,16384 sized FFT windows.
+  - Allows FFT window filtering such as rectangle/triangle/hanning/hamming/
+    blackman/blackman-harris to obtain more accurate frequency information.
+  - Allows per speaker analysis, so each speaker of a stereo signal can 
+    be analyzed individually.
+  - Doesn't need any initialization flags to enable.  Just call it.
++ Added user created sound support.  Create user streams or samples with 
+  System::createSoundEx.
++ Added ability to 'rip' PCM sound data from sounds by simply supplying
+  a read/seek callback in System::createSoundEx as you would with a user 
+  created sound.  Can also be used to overwrite data FMOD reads as it is 
+  loading.
++ System::setFileSystem now works.
++ Added createusersound example.
++ Added playsound example.
+
+- Fixed 2d software mixed sounds only being 0 or full volume when 
+  Channel::setVolume was used in conjunction with System::update.
+- Fixed hang on sounds opened as samples with FMOD_SOFTWARE | FMOD_NONBLOCKING.
+- Fixed crash on FMOD_SOFTWARE based sounds when a channel was used twice.
+- Fixed click of FMOD_SOFTWARE based sounds when looping or for 
+  FMOD_CREATESTREAM | FMOD_SOFTWARE based sounds.
+- All plugins now around 4k smaller each.
+- Fixed channel management bugs to do with virtual channels stealing.
+
+* API changes, variables and functions renamed / moved.
+* Changed DLL exports to be stdcall again.  Symbols are not stdcall mangled 
+  though so it should make delphi / VB headers easier.
+
+7/09/04 4.00.05 ALPHA
+---------------------
+
++ Added FMOD_OPENONLY.  This opens a sound, but doesnt read or prebuffer it.  
+  Useful for quick opens.
++ Added Sound::readData.  In conjunction with the above, a user can use it to 
+  read and decompress sound data into their own buffer.
++ Added FMOD_CDDA_FORCEASPI and FMOD_CDDA_JITTERCORRECT flags to mode bits.
++ Added lcc-win32 import libraries.
++ More documentation.
+
+- Fixed plugins not working correctly due to incorrect calling convention.
+- Fixed 3D software mixed streams not allowing frequency or volume to be set on
+  them.
+- Removed FMOD_DONTPREBUFFER.  (use FMOD_OPENONLY instead).
+
+* Sound::getLength now returns length in samples, length in milliseconds, and
+  length in bytes instead of just length in samples.
+
+3/09/04 4.00.04 ALPHA
+---------------------
+
++ Channel::setCallback support added, currently only FMOD_CHANNEL_CALLBACK_END 
+  supported.
++ More documentation.
+
+- FMOD_SOFTWARE based sounds now allowed to be loaded, even if 0 is specified 
+  in maxsoftwarechannels in System::init.  (which turns off the software mixer).
+- Fixed FMOD_SOFTWARE static sounds not playing the last few samples of a sound.
+
+30/08/04 4.00.03 ALPHA
+----------------------
+
++ Tag support added.
++ More examples.
++ More documentation.
++ Added support for weirder extensible multichannel multibitformat .wav files.
++ Addition Equivalent of "FSOUND_FORCEMONO" from FMOD 3, but is automatic!  No 
+  flags needed by the user, 3d stereo sounds are automatically downmixed, and
+  with far greater efficiency than fmod3.
+
+- CDDA fixes.
+- Panning fixes in software engine.
+- 24bit sound / streaming / resampling and output support working properly.
+- Streamer bugs fixed.
+
+* Some API changes / renames / additions / removals.
+* Software mixing / DSP engine overhaul and optimizations, now 2-3x faster and
+  no dynamic memory allocation when playing sounds.
+* Oscillator unit updated.
+* System::getCPUUsage now ignores I/O time so CDDA support doesnt say it is 
+  using 50% cpu when it is actually only using 1-2% :)
+
+27/07/04 4.00.02 ALPHA
+----------------------
+
++ Added Delphi headers
++ Added some more documentation.
+
+26/07/04 4.00.01 ALPHA
+----------------------
+
+* Initial release

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="png" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\png\Debug\libpng" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-g" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\png\Release\libpng" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\png\Unicode_Debug\libpng" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\png\Unicode_Release\libpng" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="png.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngerror.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngget.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngmem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngpread.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngread.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngrio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngrtran.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngrutil.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngtrans.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngvcrd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngwio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngwrite.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngwtran.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pngwutil.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="png.h" />
+		<Unit filename="pngconf.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

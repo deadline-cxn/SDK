@@ -1,0 +1,10 @@
+Jonathan Metzgar
+microwerx@yahoo.com
+I have a fire demonstration effects program that I
+wrote and I thought you might be interested in posting
+it in your "Demo Effects" section in the Programming
+section. It was written in C++ and demonstrates 8 fire
+effects, has a easy to use interface, etc. If you
+would like to check the program, it is attached as a
+ZIP file. 
+

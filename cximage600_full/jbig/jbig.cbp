@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="jbig" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jbig\Debug\libjbig" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jbig\Release\libjbig" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jbig\Unicode_Debug\libjbig" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\jbig\Unicode_Release\libjbig" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="jbig.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jbig_tab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jbig.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

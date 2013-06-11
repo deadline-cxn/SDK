@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Tiff" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\tiff\Debug\libTiff" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\tiff\Release\libTiff" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Debug">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\tiff\Unicode_Debug\libTiff" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Debug" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+			<Target title="Win32 Unicode Release">
+				<Option output="C:\xampp\htdocs\Projects\cximage600_full\tiff\Unicode_Release\libTiff" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="Unicode_Release" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_LIB" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\zlib" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="fax3sm_winnt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_aux.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_close.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_codec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_compress.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_dir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_dirinfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_dirread.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_dirwrite.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_dumpmode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_fax3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_flush.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_getimage.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_jpeg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_luv.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_lzw.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_next.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_ojpeg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_open.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_packbits.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_pixarlog.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_predict.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_read.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_strip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_swab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_thunder.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_tile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_version.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_warning.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_write.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tif_zip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="t4.h" />
+		<Unit filename="tif_dir.h" />
+		<Unit filename="tif_fax3.h" />
+		<Unit filename="tif_predict.h" />
+		<Unit filename="tiff.h" />
+		<Unit filename="tiffcomp.h" />
+		<Unit filename="tiffconf.h" />
+		<Unit filename="tiffio.h" />
+		<Unit filename="tiffiop.h" />
+		<Unit filename="uvcode.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

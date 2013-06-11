@@ -1,0 +1,123 @@
+.PP
+.TH "Script::Property" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Script::Property \- This class is used for DSO modules that impliment property extensions for scripting objects. ccScript property module. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+.SS "Static Public Methods"
+
+.in +1c
+.ti -1c
+.RI "Property * \fBfind\fP (const char *name)"
+.br
+.in -1c
+.SS "Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBsetProperty\fP (char *data, char *temp, size_t size)=0"
+.br
+.RI "\fISet property method.\fP"
+.ti -1c
+.RI "virtual void \fBgetProperty\fP (char *data, char *temp, size_t size)=0"
+.br
+.RI "\fIGet property method.\fP"
+.ti -1c
+.RI "virtual void \fBadjProperty\fP (char *data, size_t size, int adjust)"
+.br
+.RI "\fIadjust value method.\fP"
+.ti -1c
+.RI "virtual size_t \fBgetPropertySize\fP (void)"
+.br
+.RI "\fIGet default size of creation if override.\fP"
+.ti -1c
+.RI "\fBProperty\fP (const char *name)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScriptInterp\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+This class is used for DSO modules that impliment property extensions for scripting objects. ccScript property module.
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+.SH "MEMBER FUNCTION DOCUMENTATION"
+.PP 
+.SS "virtual void Script::Property::adjProperty (char * data, size_t size, int adjust)\fC [inline, protected, virtual]\fP"
+.PP
+adjust value method.
+.PP
+Performs inc.xxx conversions.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIdata\fP\fP
+buffer to work from. 
+.TP
+\fB\fIsize\fP\fP
+of data buffer. 
+.TP
+\fB\fIaccumulated\fP\fP
+offset. 
+.SS "virtual void Script::Property::getProperty (char * data, char * temp, size_t size)\fC [protected, pure virtual]\fP"
+.PP
+Get property method.
+.PP
+Performs var.xxx conversions.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIdata\fP\fP
+buffer to copy from. 
+.TP
+\fB\fItemp\fP\fP
+workspace to save to. 
+.TP
+\fB\fIsize\fP\fP
+of temp workspace. 
+.SS "virtual size_t Script::Property::getPropertySize (void)\fC [inline, protected, virtual]\fP"
+.PP
+Get default size of creation if override.
+.PP
+\fBReturns: \fP
+.in +1c
+size to make. 
+.SS "virtual void Script::Property::setProperty (char * data, char * temp, size_t size)\fC [protected, pure virtual]\fP"
+.PP
+Set property method.
+.PP
+Performs set.xxx and init.xxx methods.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIdata\fP\fP
+buffer to work from. 
+.TP
+\fB\fItemp\fP\fP
+workspace buffer to use. 
+.TP
+\fB\fIsize\fP\fP
+of data area. 
+.TP
+\fB\fIsize\fP\fP
+of temp area. 
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

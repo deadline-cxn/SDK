@@ -1,0 +1,147 @@
+.TH "ScriptModule" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScriptModule \- This class is used for generic ccScript DSO plugins. ccScript loadable module. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+Inherits Script.
+.PP
+.SS "Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBmoduleAttach\fP (\fBScriptInterp\fP *interp)"
+.br
+.RI "\fIMethod to call for handling script attach events.\fP"
+.ti -1c
+.RI "virtual void \fBmoduleDetach\fP (\fBScriptInterp\fP *interp)"
+.br
+.RI "\fIMethod to call for handling script detach events.\fP"
+.ti -1c
+.RI "virtual char * \fBgetSession\fP (\fBScriptInterp\fP *interp, Line *line, Session **session)"
+.br
+.RI "\fICheck for script handler.\fP"
+.ti -1c
+.RI "virtual char * \fBcheckScript\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIValidate script command for parser.\fP"
+.ti -1c
+.RI "\fBScriptModule\fP (const char *name)"
+.br
+.RI "\fIConstruct and link-in a command handler.\fP"
+.in -1c
+.SS "Static Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "ScriptModule * \fBfind\fP (const char *name)"
+.br
+.RI "\fIFind a given module.\fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScriptInterp\fP"
+.br
+.ti -1c
+.RI "class \fBScriptCommand\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+This class is used for generic ccScript DSO plugins. ccScript loadable module.
+.PP
+This allows plugins to become part of the base ccScript engine.
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+.SH "CONSTRUCTOR & DESTRUCTOR DOCUMENTATION"
+.PP 
+.SS "ScriptModule::ScriptModule (const char * name)\fC [protected]\fP"
+.PP
+Construct and link-in a command handler.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of command being created. 
+.SH "MEMBER FUNCTION DOCUMENTATION"
+.PP 
+.SS "virtual char* ScriptModule::checkScript (Line * line, \fBScriptImage\fP * img)\fC [inline, protected, virtual]\fP"
+.PP
+Validate script command for parser.
+.PP
+\fBReturns: \fP
+.in +1c
+error string or NULL if ok. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIscript\fP\fP
+line evaluated. 
+.TP
+\fB\fIimage\fP\fP
+set analyzed. 
+.SS "ScriptModule* ScriptModule::find (const char * name)\fC [static, protected]\fP"
+.PP
+Find a given module.
+.PP
+\fBReturns: \fP
+.in +1c
+module found. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fImodule\fP\fP
+name. 
+.SS "virtual char* ScriptModule::getSession (\fBScriptInterp\fP * interp, Line * line, Session ** session)\fC [inline, protected, virtual]\fP"
+.PP
+Check for script handler.
+.PP
+\fBReturns: \fP
+.in +1c
+error string. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIinterpreter\fP\fP
+image. 
+.TP
+\fB\fIline\fP\fP
+object parsed. 
+.TP
+\fB\fIpointer\fP\fP
+to session handler. 
+.SS "virtual void ScriptModule::moduleAttach (\fBScriptInterp\fP * interp)\fC [inline, protected, virtual]\fP"
+.PP
+Method to call for handling script attach events.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIinterpreter\fP\fP
+being attached. 
+.SS "virtual void ScriptModule::moduleDetach (\fBScriptInterp\fP * interp)\fC [inline, protected, virtual]\fP"
+.PP
+Method to call for handling script detach events.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIinterpreter\fP\fP
+being detached. 
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

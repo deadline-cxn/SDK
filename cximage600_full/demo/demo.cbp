@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="demo" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="..\bin\demod" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_MBCS" />
+					<Add option="-DVATI_EXTENSIONS" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add option="-D_WIN32_IE=0x0400" />
+					<Add directory="..\cximage" />
+				</Compiler>
+				<Linker>
+					<Add library="wininet" />
+					<Add library="../png/Debug/png" />
+					<Add library="../jpeg/Debug/jpeg" />
+					<Add library="../zlib/Debug/zlib" />
+					<Add library="../tiff/Debug/tiff" />
+					<Add library="../jbig/Debug/jbig" />
+					<Add library="../jasper/Debug/jasper" />
+					<Add library="../mng/Debug/mng" />
+					<Add library="../cximage/Debug/cximage" />
+				</Linker>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="..\bin\demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_MBCS" />
+					<Add option="-DVATI_EXTENSIONS" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add option="-D_WIN32_IE=0x0400" />
+					<Add directory="..\cximage" />
+				</Compiler>
+				<Linker>
+					<Add library="wininet" />
+					<Add library="../png/Release/png" />
+					<Add library="../jpeg/Release/jpeg" />
+					<Add library="../zlib/Release/zlib" />
+					<Add library="../tiff/Release/tiff" />
+					<Add library="../jbig/Release/jbig" />
+					<Add library="../jasper/Release/jasper" />
+					<Add library="../mng/Release/mng" />
+					<Add library="../cximage/Release/cximage" />
+				</Linker>
+			</Target>
+			<Target title="Win32 Unicode Debug">
+				<Option output="..\bin\demoud" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Unicode_Debug" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_MBCS" />
+					<Add option="-DVATI_EXTENSIONS" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add option="-D_CRT_NON_CONFORMING_SWPRINTFS" />
+					<Add option="-D_WIN32_IE=0x0400" />
+					<Add directory="..\cximage" />
+				</Compiler>
+				<Linker>
+					<Add library="wininet" />
+					<Add library="../png/Debug/png" />
+					<Add library="../jpeg/Debug/jpeg" />
+					<Add library="../zlib/Debug/zlib" />
+					<Add library="../tiff/Debug/tiff" />
+					<Add library="../j2k/Debug/j2k" />
+					<Add library="../jbig/Debug/jbig" />
+					<Add library="../jasper/Debug/jasper" />
+					<Add library="../cximage/Debug/cximage" />
+					<Add library="../png/Unicode_Debug/png" />
+					<Add library="../jpeg/Unicode_Debug/jpeg" />
+					<Add library="../zlib/Unicode_Debug/zlib" />
+					<Add library="../tiff/Unicode_Debug/tiff" />
+					<Add library="../jbig/Unicode_Debug/jbig" />
+					<Add library="../jasper/Unicode_Debug/jasper" />
+					<Add library="../mng/Unicode_Debug/mng" />
+					<Add library="../cximage/Unicode_Debug/cximage" />
+				</Linker>
+			</Target>
+			<Target title="Win32 Unicode Release">
+				<Option output="..\bin\demou" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Unicode_Release" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_AFXDLL" />
+					<Add option="-D_MBCS" />
+					<Add option="-DVATI_EXTENSIONS" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add option="-D_CRT_NON_CONFORMING_SWPRINTFS" />
+					<Add option="-D_WIN32_IE=0x0400" />
+					<Add directory="..\cximage" />
+				</Compiler>
+				<Linker>
+					<Add library="wininet" />
+					<Add library="../png/Release/png" />
+					<Add library="../jpeg/Release/jpeg" />
+					<Add library="../zlib/Release/zlib" />
+					<Add library="../tiff/Release/tiff" />
+					<Add library="../j2k/Release/j2k" />
+					<Add library="../jbig/Release/jbig" />
+					<Add library="../jasper/Release/jasper" />
+					<Add library="../cximage/Release/cximage" />
+					<Add library="../png/Unicode_Release/png" />
+					<Add library="../jpeg/Unicode_Release/jpeg" />
+					<Add library="../zlib/Unicode_Release/zlib" />
+					<Add library="../tiff/Unicode_Release/tiff" />
+					<Add library="../jbig/Unicode_Release/jbig" />
+					<Add library="../jasper/Unicode_Release/jasper" />
+					<Add library="../mng/Unicode_Release/mng" />
+					<Add library="../cximage/Unicode_Release/cximage" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="BCMenu.cpp" />
+		<Unit filename="ChildFrm.cpp" />
+		<Unit filename="demo.cpp" />
+		<Unit filename="demo.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="demoDoc.cpp" />
+		<Unit filename="demoView.cpp" />
+		<Unit filename="DlgCapture.cpp" />
+		<Unit filename="DlgColorize.cpp" />
+		<Unit filename="DlgCombine.cpp" />
+		<Unit filename="DlgCustomFilter.cpp" />
+		<Unit filename="DlgDataExt.cpp" />
+		<Unit filename="DlgDecBpp.cpp" />
+		<Unit filename="DlgDither.cpp" />
+		<Unit filename="DlgExpand.cpp" />
+		<Unit filename="DlgFFT.cpp" />
+		<Unit filename="DlgFloodFill.cpp" />
+		<Unit filename="DlgGamma.cpp" />
+		<Unit filename="DlgHisto.cpp" />
+		<Unit filename="DlgIncBpp.cpp" />
+		<Unit filename="DlgJpeg.cpp" />
+		<Unit filename="DlgMix.cpp" />
+		<Unit filename="DlgOpacity.cpp" />
+		<Unit filename="DlgOptions.cpp" />
+		<Unit filename="DlgPalette.cpp" />
+		<Unit filename="DlgRepair.cpp" />
+		<Unit filename="DlgResample.cpp" />
+		<Unit filename="DlgRotate.cpp" />
+		<Unit filename="DlgShadow.cpp" />
+		<Unit filename="DlgSkew.cpp" />
+		<Unit filename="DlgText.cpp" />
+		<Unit filename="DlgThreshold.cpp" />
+		<Unit filename="DlgURL.cpp" />
+		<Unit filename="logomdi.cpp" />
+		<Unit filename="MainFrm.cpp" />
+		<Unit filename="Quantize.cpp" />
+		<Unit filename="StdAfx.cpp" />
+		<Unit filename="TwainCpp.cpp" />
+		<Unit filename="xTargetButton.cpp" />
+		<Unit filename="BCMenu.h" />
+		<Unit filename="ChildFrm.h" />
+		<Unit filename="demo.h" />
+		<Unit filename="demoDoc.h" />
+		<Unit filename="demoView.h" />
+		<Unit filename="DlgCapture.h" />
+		<Unit filename="DlgColorize.h" />
+		<Unit filename="DlgCombine.h" />
+		<Unit filename="DlgCustomFilter.h" />
+		<Unit filename="DlgDataExt.h" />
+		<Unit filename="DlgDecBpp.h" />
+		<Unit filename="DlgDither.h" />
+		<Unit filename="DlgExpand.h" />
+		<Unit filename="DlgFFT.h" />
+		<Unit filename="DlgFloodFill.h" />
+		<Unit filename="DlgGamma.h" />
+		<Unit filename="DlgHisto.h" />
+		<Unit filename="DlgIncBpp.h" />
+		<Unit filename="DlgJpeg.h" />
+		<Unit filename="DlgMix.h" />
+		<Unit filename="DlgOpacity.h" />
+		<Unit filename="DlgOptions.h" />
+		<Unit filename="DlgPalette.h" />
+		<Unit filename="DlgRepair.h" />
+		<Unit filename="DlgResample.h" />
+		<Unit filename="DlgRotate.h" />
+		<Unit filename="DlgShadow.h" />
+		<Unit filename="DlgSkew.h" />
+		<Unit filename="DlgText.h" />
+		<Unit filename="DlgThreshold.h" />
+		<Unit filename="DlgURL.h" />
+		<Unit filename="logomdi.h" />
+		<Unit filename="MainFrm.h" />
+		<Unit filename="Quantize.h" />
+		<Unit filename="StdAfx.h" />
+		<Unit filename="TwainCpp.h" />
+		<Unit filename="xTargetButton.h" />
+		<Unit filename="res\b1.ico" />
+		<Unit filename="res\bg.BMP" />
+		<Unit filename="res\bg.gif" />
+		<Unit filename="res\bg.jpg" />
+		<Unit filename="res\bg2.jpg" />
+		<Unit filename="res\canc.ico" />
+		<Unit filename="res\demo.ico" />
+		<Unit filename="res\demo.rc2" />
+		<Unit filename="res\demoDoc.ico" />
+		<Unit filename="res\Explorer.ico" />
+		<Unit filename="res\gray.ico" />
+		<Unit filename="res\ico2.ico" />
+		<Unit filename="res\icon1.ico" />
+		<Unit filename="res\no1.ico" />
+		<Unit filename="res\ok.ico" />
+		<Unit filename="res\r1.ico" />
+		<Unit filename="res\testbmp.bmp" />
+		<Unit filename="res\Toolbar.bmp" />
+		<Unit filename="res\toolbar1.bmp" />
+		<Unit filename="Res\toolbar2.bmp" />
+		<Unit filename="res\bg.tif" />
+		<Unit filename="res\us.png" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

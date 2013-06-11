@@ -1,0 +1,62 @@
+ccscript Library NEWS -- history of visible user changes. 2000-04-25
+
+Release 2.0.0
+
+This is a major rewrite to support GNU Common C++ "2" and features
+support for all kinds of new multi-line conditional constructs.  If
+can now extend thru a then-else-endif block and can be nested.  Do
+and For loops can have segmented conditional cases embedded in them.
+
+Release 1.7.0
+
+A news entry is a big surprise.  The spec for symbol parsing has been
+changed to suport a local variable heap for call based functions and the
+ability to specify setting of local and global variables.  This and
+direcxt support for DSO binding in the core interpreter is perhaps the
+single largest fundimental change in ccScript behavior since inception.
+This release is the first GNU release of ccScript.
+
+Release 1.2.5
+
+The most visible change is the addition of 8 "global locks" which can be
+used to sychronize events between scripts where only single event
+execution dispatch must occur.  This is carried by the new lock and
+unlock commands.  If a trylock is in use by another script, an ^error
+handler is invoked.  When a script exits, any locks it held are
+automatically released.  The "waitlock" command will wait until a lock
+becomes available.
+
+Release 1.1.1
+
+The most visible change is that the script compiler has been significently
+expanded in ways that should make writing ccscript applications much
+easier.  The first change is the use of compiler "directives".
+
+Compiler directives are commands that are processed entirely during the
+compile phase.  They may be used to process "include" files, to define
+"$" constants, etc.  The most interesting of these is ".template",
+which allows a script to inherit "trap handlers" from another loaded
+script.  Hence, if the same trap handlers are used in multiple scripts
+for an application, these common handlers could be given a script of
+their own (traps.tmpl, for example) and included as needed.
+
+Another important change is the use of subscript entities within a
+single file.  This makes it possible to write a complete ccscript
+application as a single script file rather than as multiple files.
+Special name scope resolution is used to abbreviate script modules
+in the same file.
+
+Release 1.1.0
+
+In that we had to change the size of the base ScriptInterp class, it was nessisary
+to create a new version.  This release introduces the concept of "once" synchronization
+within ccscript and optional passive testing for signal events, as well as the new "once"
+and "on" keywords.  Also, some previously added commands from bayonne, such as "pack"
+and "unpack" are now part of the core language.
+
+Release 1.0.0
+
+ccscript is the scripting engine used in Bayonne, the telephony server of
+the GNU project.  ccscript used to be available as part of the "extras"
+package of Common C++ but is now seperately available.
+

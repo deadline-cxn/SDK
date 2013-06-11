@@ -1,0 +1,347 @@
+.TH "ScriptCommand" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScriptCommand \- This class holds the bound keyword set for a given Bayonne style script interpreter. Bayonne script keyword binding tables and compiler constants. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+Inherits Script.
+.PP
+.SS "Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "Method \fBgetHandler\fP (const char *keyword)"
+.br
+.RI "\fIGet the method handler associated with a given keyword.\fP"
+.ti -1c
+.RI "char * \fBcheck\fP (char *command, Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fICheck keyword syntax.\fP"
+.ti -1c
+.RI "virtual unsigned \fBgetTrapId\fP (const char *trap)"
+.br
+.RI "\fIGet the trap id number associated with a trap name.\fP"
+.ti -1c
+.RI "virtual unsigned long \fBgetTrapDefault\fP (void)"
+.br
+.RI "\fIGet the mask bits for the default script.\fP"
+.ti -1c
+.RI "virtual unsigned long \fBgetTrapHandler\fP (Name *scr)"
+.br
+.RI "\fIGet the mask bits for a trap 'handler'.\fP"
+.ti -1c
+.RI "virtual unsigned long \fBgetTrapMask\fP (unsigned id)"
+.br
+.RI "\fIGet a trap mask for a given identifer.\fP"
+.ti -1c
+.RI "virtual unsigned long \fBgetTrapModifier\fP (const char *trapname)"
+.br
+.RI "\fIA helper method for the compiler.\fP"
+.ti -1c
+.RI "virtual unsigned long \fBgetTrapMask\fP (const char *trapname)"
+.br
+.RI "\fIA helper method for the compiler used specifically for '^' trap subsection requests.\fP"
+.ti -1c
+.RI "char * \fBchkIgnore\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIDefault compiler syntax to accept any syntax.\fP"
+.ti -1c
+.RI "char * \fBchkModule\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIModule based script checker.\fP"
+.ti -1c
+.RI "char * \fBchkUse\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIPerforms DSO load phase for USE modules.\fP"
+.ti -1c
+.RI "char * \fBchkHasModify\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIA check used by 'inc' and 'dec'.\fP"
+.ti -1c
+.RI "char * \fBchkHasVars\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIScript compiler syntax check for certain variable using statements such as 'clear'.\fP"
+.ti -1c
+.RI "char * \fBchkHasList\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIScript compiler syntax check for assignment statements such as 'set', 'for', etc.\fP"
+.ti -1c
+.RI "char * \fBchkNoArgs\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIScript compiler syntax check for commands that require no arguments to be present.\fP"
+.ti -1c
+.RI "char * \fBchkHasArgs\fP (Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIScript compiler syntax check for commands that require one or more arguments to be present.\fP"
+.ti -1c
+.RI "void \fBload\fP (Script::Define *keywords)"
+.br
+.RI "\fILoad a set of keywords into the system keyword table.\fP"
+.ti -1c
+.RI "int \fBtrap\fP (const char *name)"
+.br
+.RI "\fIAdd a trap handler symbolic identity to the keyword table.\fP"
+.ti -1c
+.RI "int \fBgetCount\fP (void)"
+.br
+.RI "\fIGet count of active traps.\fP"
+.ti -1c
+.RI "virtual char * \fBcheck\fP (Check chk, Line *line, \fBScriptImage\fP *img)"
+.br
+.RI "\fIPerform compile time check of a specified symbol.\fP"
+.ti -1c
+.RI "\fBScriptCommand\fP (const char *cfgfile)"
+.br
+.RI "\fILoad a keydata entry for compile-time constants and bind the default \fBScriptInterp\fP base class methods.\fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScriptImage\fP"
+.br
+.ti -1c
+.RI "class \fBScriptInterp\fP"
+.br
+.ti -1c
+.RI "class \fBScriptModule\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+This class holds the bound keyword set for a given Bayonne style script interpreter. Bayonne script keyword binding tables and compiler constants.
+.PP
+Application specific dialects are created by deriving a application specific version of ScriptCommand which then binds application specific keywords and associated methods in an application derived \fBScriptInterp\fP which are typecast to (scriptmethod_t).
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+.SH "CONSTRUCTOR & DESTRUCTOR DOCUMENTATION"
+.PP 
+.SS "ScriptCommand::ScriptCommand (const char * cfgfile)\fC [protected]\fP"
+.PP
+Load a keydata entry for compile-time constants and bind the default \fBScriptInterp\fP base class methods.
+.PP
+This class is never used alone, so no public constructor is provided.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIkeydata\fP\fP
+entry for constants. 
+.SH "MEMBER FUNCTION DOCUMENTATION"
+.PP 
+.SS "virtual char* ScriptCommand::check (Check chk, Line * line, \fBScriptImage\fP * img)\fC [inline, protected, virtual]\fP"
+.PP
+Perform compile time check of a specified symbol.
+.PP
+\fBReturns: \fP
+.in +1c
+syntax error message string. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIline\fP\fP
+pointer. 
+.SS "char* ScriptCommand::check (char * command, Line * line, \fBScriptImage\fP * img)\fC [protected]\fP"
+.PP
+Check keyword syntax.
+.PP
+\fBReturns: \fP
+.in +1c
+syntax error string or NULL. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of keyword to check. 
+.TP
+\fB\fIhook\fP\fP
+to compiler source. 
+.SS "char* ScriptCommand::chkHasArgs (Line * line, \fBScriptImage\fP * img)\fC [protected]\fP"
+.PP
+Script compiler syntax check for commands that require one or more arguments to be present.
+.PP
+\fBReturns: \fP
+.in +1c
+syntax error message string or NULL. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIline\fP\fP
+statement. 
+.SS "char* ScriptCommand::chkHasList (Line * line, \fBScriptImage\fP * img)\fC [protected]\fP"
+.PP
+Script compiler syntax check for assignment statements such as 'set', 'for', etc.
+.PP
+\fBReturns: \fP
+.in +1c
+syntax error message string or NULL. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIline\fP\fP
+statement. 
+.SS "char* ScriptCommand::chkHasModify (Line * line, \fBScriptImage\fP * img)\fC [protected]\fP"
+.PP
+A check used by 'inc' and 'dec'.
+.PP
+\fBReturns: \fP
+.in +1c
+synxtax error message string or NULL. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIline\fP\fP
+statement. 
+.SS "char* ScriptCommand::chkHasVars (Line * line, \fBScriptImage\fP * img)\fC [protected]\fP"
+.PP
+Script compiler syntax check for certain variable using statements such as 'clear'.
+.PP
+Assumes list of valid variable arguments. 
+.SS "char* ScriptCommand::chkNoArgs (Line * line, \fBScriptImage\fP * img)\fC [protected]\fP"
+.PP
+Script compiler syntax check for commands that require no arguments to be present.
+.PP
+\fBReturns: \fP
+.in +1c
+syntax error message string or NULL. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIline\fP\fP
+statement. 
+.SS "int ScriptCommand::getCount (void)\fC [inline, protected]\fP"
+.PP
+Get count of active traps.
+.PP
+\fBReturns: \fP
+.in +1c
+count of active trap identifiers. 
+.SS "Method ScriptCommand::getHandler (const char * keyword)\fC [protected]\fP"
+.PP
+Get the method handler associated with a given keyword.
+.PP
+This is used by \fBScriptImage\fP when compiling.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIkeyword\fP\fP
+to search for. 
+.PP
+\fBReturns: \fP
+.in +1c
+method handler to execute for this keyword. 
+.SS "virtual unsigned long ScriptCommand::getTrapDefault (void)\fC [inline, protected, virtual]\fP"
+.PP
+Get the mask bits for the default script.
+.PP
+\fBReturns: \fP
+.in +1c
+trap mask to use. 
+.SS "virtual unsigned long ScriptCommand::getTrapHandler (Name * scr)\fC [inline, protected, virtual]\fP"
+.PP
+Get the mask bits for a trap 'handler'.
+.PP
+\fBReturns: \fP
+.in +1c
+trap mask to use. 
+.SS "virtual unsigned ScriptCommand::getTrapId (const char * trap)\fC [protected, virtual]\fP"
+.PP
+Get the trap id number associated with a trap name.
+.PP
+\fBReturns: \fP
+.in +1c
+trap id number, 0 (exit) if invalid. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of trap identifier. 
+.SS "virtual unsigned long ScriptCommand::getTrapMask (const char * trapname)\fC [protected, virtual]\fP"
+.PP
+A helper method for the compiler used specifically for '^' trap subsection requests.
+.PP
+These will occasionally carry different attribute settings.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of trap identifier. 
+.PP
+\fBReturns: \fP
+.in +1c
+bit shifted mask or 0 if invalid. 
+.SS "virtual unsigned long ScriptCommand::getTrapMask (unsigned id)\fC [protected, virtual]\fP"
+.PP
+Get a trap mask for a given identifer.
+.PP
+This is a virtual since some derived handlers may manipulate mask bits.
+.PP
+\fBReturns: \fP
+.in +1c
+signal mask. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIidentifier.\fP\fP
+.SS "virtual unsigned long ScriptCommand::getTrapModifier (const char * trapname)\fC [inline, protected, virtual]\fP"
+.PP
+A helper method for the compiler.
+.PP
+Converts a named trap into it's bit shifted mask. By making it a virtual, derived dialects can add 'aliases' to default trap names.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of trap identifier. 
+.PP
+\fBReturns: \fP
+.in +1c
+bit shifted mask or 0 if invalid. 
+.SS "void ScriptCommand::load (Script::Define * keywords)\fC [protected]\fP"
+.PP
+Load a set of keywords into the system keyword table.
+.PP
+This provides a convenient method of initializing and adding to the keyword indexes.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIkeyword\fP\fP
+entries to load. 
+.SS "int ScriptCommand::trap (const char * name)\fC [protected]\fP"
+.PP
+Add a trap handler symbolic identity to the keyword table.
+.PP
+These are used to handle signal mask coercion and event branch points in the compiler.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIrequested\fP\fP
+trap name. 
+.PP
+\fBReturns: \fP
+.in +1c
+assigned id number for the trap. 
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

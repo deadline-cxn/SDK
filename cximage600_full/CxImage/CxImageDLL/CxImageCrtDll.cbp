@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CxImageCrtDll" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win32 Debug">
+				<Option output="..\..\bin\cximagecrtd" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_USRCxImageCrtDll" />
+					<Add option="-DCxImageCrtDll_EXPORTS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DJAS_WIN_MSVC_BUILD" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\..\zlib" />
+					<Add directory="..\..\jasper\include" />
+				</Compiler>
+				<Linker>
+					<Add library="kernel32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+					<Add library="winspool" />
+					<Add library="comdlg32" />
+					<Add library="advapi32" />
+					<Add library="shell32" />
+					<Add library="ole32" />
+					<Add library="oleaut32" />
+					<Add library="uuid" />
+					<Add library="odbc32" />
+					<Add library="odbccp32" />
+				</Linker>
+			</Target>
+			<Target title="Win32 Release">
+				<Option output="..\..\bin\cximagecrt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_USRCxImageCrtDll" />
+					<Add option="-DCxImageCrtDll_EXPORTS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DJAS_WIN_MSVC_BUILD" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add directory="..\..\zlib" />
+					<Add directory="..\..\jasper\include" />
+				</Compiler>
+				<Linker>
+					<Add library="kernel32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+					<Add library="winspool" />
+					<Add library="comdlg32" />
+					<Add library="advapi32" />
+					<Add library="shell32" />
+					<Add library="ole32" />
+					<Add library="oleaut32" />
+					<Add library="uuid" />
+					<Add library="odbc32" />
+					<Add library="odbccp32" />
+				</Linker>
+			</Target>
+			<Target title="Win32 Unicode Debug">
+				<Option output="..\..\bin\cximagecrtdu" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Unicode_Debug" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DJAS_WIN_MSVC_BUILD" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add option="-D_CRT_NON_CONFORMING_SWPRINTFS" />
+					<Add directory="..\..\zlib" />
+					<Add directory="..\..\jasper\include" />
+				</Compiler>
+				<Linker>
+					<Add library="kernel32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+				</Linker>
+			</Target>
+			<Target title="Win32 Unicode Release">
+				<Option output="..\..\bin\cximagecrtu" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Unicode_Release" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-fexceptions" />
+					<Add option="-O2" />
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_MBCS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DJAS_WIN_MSVC_BUILD" />
+					<Add option="-D_UNICODE" />
+					<Add option="-DUNICODE" />
+					<Add option="-D_CRT_SECURE_NO_DEPRECATE" />
+					<Add option="-D_CRT_NON_CONFORMING_SWPRINTFS" />
+					<Add directory="..\..\zlib" />
+					<Add directory="..\..\jasper\include" />
+				</Compiler>
+				<Linker>
+					<Add library="kernel32" />
+					<Add library="user32" />
+					<Add library="gdi32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="CxImageCrtDll.cpp" />
+		<Unit filename="CxImageCrtDll.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="..\tif_xfile.cpp" />
+		<Unit filename="..\ximabmp.cpp" />
+		<Unit filename="..\ximadsp.cpp" />
+		<Unit filename="..\ximaenc.cpp" />
+		<Unit filename="..\ximaexif.cpp" />
+		<Unit filename="..\ximage.cpp" />
+		<Unit filename="..\ximagif.cpp" />
+		<Unit filename="..\ximahist.cpp" />
+		<Unit filename="..\ximaico.cpp" />
+		<Unit filename="..\ximainfo.cpp" />
+		<Unit filename="..\ximaint.cpp" />
+		<Unit filename="..\ximajas.cpp" />
+		<Unit filename="..\ximajbg.cpp" />
+		<Unit filename="..\ximajpg.cpp" />
+		<Unit filename="..\ximalpha.cpp" />
+		<Unit filename="..\ximalyr.cpp" />
+		<Unit filename="..\ximamng.cpp" />
+		<Unit filename="..\ximapal.cpp" />
+		<Unit filename="..\ximapcx.cpp" />
+		<Unit filename="..\ximapng.cpp" />
+		<Unit filename="..\ximaraw.cpp" />
+		<Unit filename="..\ximasel.cpp" />
+		<Unit filename="..\ximaska.cpp" />
+		<Unit filename="..\ximatga.cpp" />
+		<Unit filename="..\ximath.cpp" />
+		<Unit filename="..\ximatif.cpp" />
+		<Unit filename="..\ximatran.cpp" />
+		<Unit filename="..\ximawbmp.cpp" />
+		<Unit filename="..\ximawmf.cpp" />
+		<Unit filename="..\ximawnd.cpp" />
+		<Unit filename="..\xmemfile.cpp" />
+		<Unit filename="StdCrt.h" />
+		<Unit filename="..\xfile.h" />
+		<Unit filename="..\ximabmp.h" />
+		<Unit filename="..\ximadefs.h" />
+		<Unit filename="..\xImage.h" />
+		<Unit filename="..\ximagif.h" />
+		<Unit filename="..\ximaico.h" />
+		<Unit filename="..\ximaiter.h" />
+		<Unit filename="..\ximajas.h" />
+		<Unit filename="..\ximajbg.h" />
+		<Unit filename="..\ximajpg.h" />
+		<Unit filename="..\ximamng.h" />
+		<Unit filename="..\ximapcx.h" />
+		<Unit filename="..\ximapng.h" />
+		<Unit filename="..\ximaraw.h" />
+		<Unit filename="..\ximatga.h" />
+		<Unit filename="..\ximath.h" />
+		<Unit filename="..\ximatif.h" />
+		<Unit filename="..\ximawbmp.h" />
+		<Unit filename="..\ximawmf.h" />
+		<Unit filename="..\xiofile.h" />
+		<Unit filename="..\xmemfile.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

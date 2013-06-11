@@ -1,0 +1,66 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: zlib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP800.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_CRT_SECURE_NO_DEPRECATE" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\cximage600_full\zlib\adler32.c"
+"D:\Projects\cximage600_full\zlib\compress.c"
+"D:\Projects\cximage600_full\zlib\crc32.c"
+"D:\Projects\cximage600_full\zlib\deflate.c"
+"D:\Projects\cximage600_full\zlib\gzio.c"
+"D:\Projects\cximage600_full\zlib\infback.c"
+"D:\Projects\cximage600_full\zlib\inffast.c"
+"D:\Projects\cximage600_full\zlib\inflate.c"
+"D:\Projects\cximage600_full\zlib\inftrees.c"
+"D:\Projects\cximage600_full\zlib\trees.c"
+"D:\Projects\cximage600_full\zlib\uncompr.c"
+"D:\Projects\cximage600_full\zlib\zutil.c"
+]
+Creating command line "cl.exe @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP800.tmp" 
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP801.tmp" with contents
+[
+/nologo /out:"Release\zlib.lib" 
+.\Release\adler32.obj
+.\Release\compress.obj
+.\Release\crc32.obj
+.\Release\deflate.obj
+.\Release\gzio.obj
+.\Release\infback.obj
+.\Release\inffast.obj
+.\Release\inflate.obj
+.\Release\inftrees.obj
+.\Release\trees.obj
+.\Release\uncompr.obj
+.\Release\zutil.obj
+]
+Creating command line "link.exe -lib @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP801.tmp"
+<h3>Output Window</h3>
+Compiling...
+adler32.c
+compress.c
+crc32.c
+deflate.c
+gzio.c
+infback.c
+inffast.c
+inflate.c
+inftrees.c
+trees.c
+uncompr.c
+zutil.c
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+zlib.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

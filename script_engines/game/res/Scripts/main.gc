@@ -1,0 +1,18 @@
+
+BEGIN SCRIPT
+  TITLE "Babe"
+
+#DECLARES
+	int i;
+
+#INIT
+	SetTimer(600);
+
+#TICK
+	Log("Tick");
+
+#ENTERROOM
+	Log("Enter room");
+	SwitchState(1);
+
+END SCRIPT

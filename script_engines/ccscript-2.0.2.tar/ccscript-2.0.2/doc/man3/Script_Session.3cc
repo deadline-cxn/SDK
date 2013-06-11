@@ -1,0 +1,78 @@
+.TH "Script::Session" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Script::Session \- This class holds an 'active' session handler that has been created by a 'slow' module handler. active session base class. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+.SS "Public Methods"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBwaitHandler\fP (void)=0"
+.br
+.RI "\fIUsed to wait for operation completion.\fP"
+.in -1c
+.SS "Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "void \fBstepScheduler\fP (const char *sighandler=NULL)"
+.br
+.RI "\fINotify interpreter callback that the session is complete and pass an optional signal handler for stepping.\fP"
+.ti -1c
+.RI "void \fBsleepScheduler\fP (timeout_t delay)"
+.br
+.RI "\fINotify interpreter callback that a timed operation is in progress.\fP"
+.ti -1c
+.RI "\fBSession\fP (\fBScriptInterp\fP *interp)"
+.br
+.RI "\fIBase constructor.\fP"
+.ti -1c
+.RI "virtual \fB~Session\fP ()"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScriptInterp\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+This class holds an 'active' session handler that has been created by a 'slow' module handler. active session base class.
+.PP
+This provides a mechanism for active sessions to impliment thread-based callback and thread based session handlers in a generic fashion.
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+.SH "MEMBER FUNCTION DOCUMENTATION"
+.PP 
+.SS "void Script::Session::sleepScheduler (timeout_t delay)\fC [protected]\fP"
+.PP
+Notify interpreter callback that a timed operation is in progress.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fItime\fP\fP
+delay of operation. 
+.SS "void Script::Session::stepScheduler (const char * sighandler = NULL)\fC [protected]\fP"
+.PP
+Notify interpreter callback that the session is complete and pass an optional signal handler for stepping.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIoptional\fP\fP
+signal handler. 
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

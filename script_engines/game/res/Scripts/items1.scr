@@ -1,0 +1,21 @@
+
+// Items
+
+BEGIN PROPS
+  SURFACE "Objects.lbm"
+
+  BEGIN ITEM
+    NAME "Mouse"
+    FRAME (0,184,16,16)
+  END ITEM
+
+  BEGIN ITEM
+    NAME "Key"
+    STARTROOM "Entre"
+    STARTPOS (20,120)
+    DESCRIPTION "A brass key."
+    FRAME (32,0,16,16)
+  END ITEM
+
+END PROPS
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Win32 Release" />
+	<File name="xfile.h" open="0" top="0" tabpos="0">
+		<Cursor position="203" topLine="33" />
+	</File>
+	<File name="ximadsp.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="103546" topLine="3536" />
+	</File>
+	<File name="ximaexif.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="27434" topLine="744" />
+	</File>
+	<File name="ximage.h" open="0" top="0" tabpos="0">
+		<Cursor position="2337" topLine="48" />
+	</File>
+</CodeBlocks_layout_file>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="CxImgLib workspace">
+		<Project filename="CxImage\cximage.cbp" />
+		<Project filename="CxImage\CxImageDLL\CxImageCrtDll.cbp" />
+		<Project filename="CxImage\CxImageDLL\cximagemfcdll.cbp" />
+		<Project filename="demo\demo.cbp" />
+		<Project filename="demo\demoDLL.cbp" />
+		<Project filename="gif2bmp\gif2bmp.cbp" />
+		<Project filename="jasper\jasper.cbp" />
+		<Project filename="jbig\jbig.cbp" />
+		<Project filename="jpeg\Jpeg.cbp" active="1" />
+		<Project filename="jpg2bmp\jpg2bmp.cbp" />
+		<Project filename="raw\libdcr.cbp" />
+		<Project filename="makeBMPmask\makeBMPmask.cbp" />
+		<Project filename="mng\mng.cbp" />
+		<Project filename="png\png.cbp" />
+		<Project filename="tga2bmp\tga2bmp.cbp" />
+		<Project filename="tiff\Tiff.cbp" />
+		<Project filename="zlib\zlib.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

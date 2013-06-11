@@ -1,0 +1,131 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: tiff - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7E2.tmp" with contents
+[
+/nologo /MD /W3 /GX /O1 /I "..\zlib" /D "WIN32" /D "NDEBUG" /D "_LIB" /D "_CRT_SECURE_NO_DEPRECATE" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\Projects\cximage600_full\tiff\fax3sm_winnt.c"
+"D:\Projects\cximage600_full\tiff\tif_aux.c"
+"D:\Projects\cximage600_full\tiff\tif_close.c"
+"D:\Projects\cximage600_full\tiff\tif_codec.c"
+"D:\Projects\cximage600_full\tiff\tif_compress.c"
+"D:\Projects\cximage600_full\tiff\tif_dir.c"
+"D:\Projects\cximage600_full\tiff\tif_dirinfo.c"
+"D:\Projects\cximage600_full\tiff\tif_dirread.c"
+"D:\Projects\cximage600_full\tiff\tif_dirwrite.c"
+"D:\Projects\cximage600_full\tiff\tif_dumpmode.c"
+"D:\Projects\cximage600_full\tiff\tif_error.c"
+"D:\Projects\cximage600_full\tiff\tif_fax3.c"
+"D:\Projects\cximage600_full\tiff\tif_flush.c"
+"D:\Projects\cximage600_full\tiff\tif_getimage.c"
+"D:\Projects\cximage600_full\tiff\tif_jpeg.c"
+"D:\Projects\cximage600_full\tiff\tif_luv.c"
+"D:\Projects\cximage600_full\tiff\tif_lzw.c"
+"D:\Projects\cximage600_full\tiff\tif_next.c"
+"D:\Projects\cximage600_full\tiff\tif_ojpeg.c"
+"D:\Projects\cximage600_full\tiff\tif_open.c"
+"D:\Projects\cximage600_full\tiff\tif_packbits.c"
+"D:\Projects\cximage600_full\tiff\tif_pixarlog.c"
+"D:\Projects\cximage600_full\tiff\tif_predict.c"
+"D:\Projects\cximage600_full\tiff\tif_print.c"
+"D:\Projects\cximage600_full\tiff\tif_read.c"
+"D:\Projects\cximage600_full\tiff\tif_strip.c"
+"D:\Projects\cximage600_full\tiff\tif_swab.c"
+"D:\Projects\cximage600_full\tiff\tif_thunder.c"
+"D:\Projects\cximage600_full\tiff\tif_tile.c"
+"D:\Projects\cximage600_full\tiff\tif_version.c"
+"D:\Projects\cximage600_full\tiff\tif_warning.c"
+"D:\Projects\cximage600_full\tiff\tif_write.c"
+"D:\Projects\cximage600_full\tiff\tif_zip.c"
+]
+Creating command line "cl.exe @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7E2.tmp" 
+Creating temporary file "J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7E3.tmp" with contents
+[
+/nologo /out:"Release\Tiff.lib" 
+.\Release\fax3sm_winnt.obj
+.\Release\tif_aux.obj
+.\Release\tif_close.obj
+.\Release\tif_codec.obj
+.\Release\tif_compress.obj
+.\Release\tif_dir.obj
+.\Release\tif_dirinfo.obj
+.\Release\tif_dirread.obj
+.\Release\tif_dirwrite.obj
+.\Release\tif_dumpmode.obj
+.\Release\tif_error.obj
+.\Release\tif_fax3.obj
+.\Release\tif_flush.obj
+.\Release\tif_getimage.obj
+.\Release\tif_jpeg.obj
+.\Release\tif_luv.obj
+.\Release\tif_lzw.obj
+.\Release\tif_next.obj
+.\Release\tif_ojpeg.obj
+.\Release\tif_open.obj
+.\Release\tif_packbits.obj
+.\Release\tif_pixarlog.obj
+.\Release\tif_predict.obj
+.\Release\tif_print.obj
+.\Release\tif_read.obj
+.\Release\tif_strip.obj
+.\Release\tif_swab.obj
+.\Release\tif_thunder.obj
+.\Release\tif_tile.obj
+.\Release\tif_version.obj
+.\Release\tif_warning.obj
+.\Release\tif_write.obj
+.\Release\tif_zip.obj
+]
+Creating command line "link.exe -lib @J:\DOCUME~1\seth\LOCALS~1\Temp\RSP7E3.tmp"
+<h3>Output Window</h3>
+Compiling...
+fax3sm_winnt.c
+tif_aux.c
+tif_close.c
+tif_codec.c
+tif_compress.c
+tif_dir.c
+tif_dirinfo.c
+tif_dirread.c
+tif_dirwrite.c
+tif_dumpmode.c
+tif_error.c
+tif_fax3.c
+tif_flush.c
+tif_getimage.c
+tif_jpeg.c
+tif_luv.c
+tif_lzw.c
+tif_next.c
+tif_ojpeg.c
+tif_open.c
+Generating Code...
+Compiling...
+tif_packbits.c
+tif_pixarlog.c
+tif_predict.c
+tif_print.c
+tif_read.c
+tif_strip.c
+tif_swab.c
+tif_thunder.c
+tif_tile.c
+tif_version.c
+tif_warning.c
+tif_write.c
+tif_zip.c
+Generating Code...
+Creating library...
+
+
+
+<h3>Results</h3>
+Tiff.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,425 @@
+.TH "ScriptSymbol" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScriptSymbol \- This class manages symbol tables for the scripting engine. Symbol table management for scripting engine. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+Inherits Script.
+.PP
+Inherited by \fBScriptInterp\fP.
+.PP
+.SS "Public Methods"
+
+.in +1c
+.ti -1c
+.RI "virtual Symbol * \fBgetEntry\fP (const char *symbol, int size=0)"
+.br
+.RI "\fIFetch a symbol entry.\fP"
+.ti -1c
+.RI "Symbol * \fBgetTrigger\fP (void)"
+.br
+.RI "\fIFetch a pending trigger value and clear it.\fP"
+.ti -1c
+.RI "int \fBgetSymbolSize\fP (void)"
+.br
+.RI "\fIFetch default symbol size.\fP"
+.ti -1c
+.RI "\fBScriptSymbol\fP (int size, int pgsize=1024)"
+.br
+.ti -1c
+.RI "void * \fBgetPointer\fP (const char *symbol)"
+.br
+.RI "\fIFetch an embedded pointer held in a symbol identifier.\fP"
+.ti -1c
+.RI "bool \fBsetPointer\fP (const char *symbol, void *data)"
+.br
+.RI "\fISet an embedded pointer object as a symbol.\fP"
+.ti -1c
+.RI "char * \fBgetSymbol\fP (const char *symbol)"
+.br
+.RI "\fIFetch the address of the value of a given symbol identifier.\fP"
+.ti -1c
+.RI "char * \fBsetSymbol\fP (const char *symbol, const char *value='')"
+.br
+.RI "\fISet a given symbol to a new value.\fP"
+.ti -1c
+.RI "char * \fBsetConst\fP (const char *symbol, const char *value='')"
+.br
+.RI "\fISet a constant value.\fP"
+.ti -1c
+.RI "bool \fBmakeSequence\fP (const char *id, unsigned char count, unsigned char recsize)"
+.br
+.RI "\fICreate a sequence object (looping fifo).\fP"
+.ti -1c
+.RI "bool \fBmakeCache\fP (const char *id, unsigned char count, unsigned char recsize)"
+.br
+.ti -1c
+.RI "bool \fBmakeStack\fP (const char *id, unsigned char count, unsigned char recsize)"
+.br
+.RI "\fICreate a stack object.\fP"
+.ti -1c
+.RI "bool \fBmakeFifo\fP (const char *id, unsigned char count, unsigned char recsize)"
+.br
+.RI "\fICreate a fifo object.\fP"
+.ti -1c
+.RI "bool \fBmakeCounter\fP (const char *id)"
+.br
+.RI "\fICreate an automatic counter object.\fP"
+.ti -1c
+.RI "bool \fBpostSymbol\fP (Symbol *sym, const char *value)"
+.br
+.RI "\fIPost data into a fifo.\fP"
+.ti -1c
+.RI "bool \fBremoveSymbol\fP (Symbol *sym, const char *value)"
+.br
+.RI "\fIRemove entry from a queue.\fP"
+.ti -1c
+.RI "char * \fBreadSymbol\fP (Symbol *sym)"
+.br
+.RI "\fIRead symbol handles special symbol types.\fP"
+.ti -1c
+.RI "bool \fBsetAlias\fP (const char *symbol, const char *source)"
+.br
+.RI "\fISet an alias.\fP"
+.ti -1c
+.RI "Symbol * \fBgetAlias\fP (const char *symbol)"
+.br
+.RI "\fIGet an alias.\fP"
+.ti -1c
+.RI "char * \fBsetSymbol\fP (const char *symbol, int size=0)"
+.br
+.RI "\fICreate a new symbol entry of a specified size.\fP"
+.ti -1c
+.RI "void \fBclrSymbol\fP (const char *id)"
+.br
+.RI "\fIClear a symbol definition.\fP"
+.ti -1c
+.RI "void \fBpurge\fP (void)"
+.br
+.RI "\fIPurge user defined symbols and memory space.\fP"
+.ti -1c
+.RI "unsigned \fBgather\fP (Symbol **index, unsigned max, const char *prefrix, const char *suffix='')"
+.br
+.RI "\fIGather a listing of common script symbols.\fP"
+.in -1c
+.SS "Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBcommit\fP (Symbol *sym)"
+.br
+.RI "\fIA virtual method used when 'committing' symbol changes.\fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScriptInterp\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+This class manages symbol tables for the scripting engine. Symbol table management for scripting engine.
+.PP
+A symbol is a variable with a reserved memory space. Some derived systems, like Bayonne IVR, may make use of a channel specific and global symbol tables.
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+.SH "MEMBER FUNCTION DOCUMENTATION"
+.PP 
+.SS "void ScriptSymbol::clrSymbol (const char * id)"
+.PP
+Clear a symbol definition.
+.PP
+This does not remove the entry if it already exists. It mearly clears the initial flag so it still can appear undefined.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to clear. 
+.SS "virtual void ScriptSymbol::commit (Symbol * sym)\fC [protected, virtual]\fP"
+.PP
+A virtual method used when 'committing' symbol changes.
+.PP
+Normally this is a non-operation, but when system specific dialects are created, special symbols that must be converted from strings into other kinds of internal data types, or that might perform operations can be represented with the commit.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+to commit. 
+.SS "Symbol* ScriptSymbol::getAlias (const char * symbol)"
+.PP
+Get an alias.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to find. 
+.PP
+\fBReturns: \fP
+.in +1c
+script symbol object or NULL. 
+.SS "virtual Symbol* ScriptSymbol::getEntry (const char * symbol, int size = 0)\fC [virtual]\fP"
+.PP
+Fetch a symbol entry.
+.PP
+Normally this is presumed to be from the native symbol table. However, the use of a virtual allows one to derive special 'system' symbols as needed for Bayonne dialects, as well as specify special attributes and properties for system symbols. For example, in the Bayonne IVR, symbols might be used to retrieve the current DTMF digit buffer and count, but these are stored as and manipulated in a channel structure rather than in 'symbol space'.
+.PP
+\fBReturns: \fP
+.in +1c
+symbol entry or NULL if not found. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to find or create. 
+.TP
+\fB\fIsize\fP\fP
+of symbol space to create if not found. 
+.SS "void* ScriptSymbol::getPointer (const char * symbol)"
+.PP
+Fetch an embedded pointer held in a symbol identifier.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name. 
+.PP
+\fBReturns: \fP
+.in +1c
+pointer held in symbol or NULL. 
+.SS "char* ScriptSymbol::getSymbol (const char * symbol)"
+.PP
+Fetch the address of the value of a given symbol identifier.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name. 
+.PP
+\fBReturns: \fP
+.in +1c
+symbol buffer address, or NULL if not found. 
+.SS "int ScriptSymbol::getSymbolSize (void)\fC [inline]\fP"
+.PP
+Fetch default symbol size.
+.PP
+\fBReturns: \fP
+.in +1c
+default symbol size. 
+.SS "Symbol* ScriptSymbol::getTrigger (void)"
+.PP
+Fetch a pending trigger value and clear it.
+.PP
+\fBReturns: \fP
+.in +1c
+symbol trigger that is active. 
+.SS "bool ScriptSymbol::makeCounter (const char * id)"
+.PP
+Create an automatic counter object.
+.PP
+\fBReturns: \fP
+.in +1c
+false if fail. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of counter. 
+.SS "bool ScriptSymbol::makeFifo (const char * id, unsigned char count, unsigned char recsize)"
+.PP
+Create a fifo object.
+.PP
+\fBReturns: \fP
+.in +1c
+false if fail. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of fifo. 
+.TP
+\fB\fInumber\fP\fP
+of records. 
+.TP
+\fB\fIsize\fP\fP
+of record. 
+.SS "bool ScriptSymbol::makeSequence (const char * id, unsigned char count, unsigned char recsize)"
+.PP
+Create a sequence object (looping fifo).
+.PP
+\fBReturns: \fP
+.in +1c
+false if fail. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of sequence. 
+.TP
+\fB\fImax.\fP\fP
+number of sequences. 
+.TP
+\fB\fIsize\fP\fP
+of sequence data record. 
+.SS "bool ScriptSymbol::makeStack (const char * id, unsigned char count, unsigned char recsize)"
+.PP
+Create a stack object.
+.PP
+\fBReturns: \fP
+.in +1c
+false if fail. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of stack. 
+.TP
+\fB\fInumber\fP\fP
+of entries. 
+.TP
+\fB\fIsize\fP\fP
+of record. 
+.SS "bool ScriptSymbol::postSymbol (Symbol * sym, const char * value)"
+.PP
+Post data into a fifo.
+.PP
+\fBReturns: \fP
+.in +1c
+false if full. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+object to post. 
+.TP
+\fB\fIdata\fP\fP
+value to post. 
+.SS "char* ScriptSymbol::readSymbol (Symbol * sym)"
+.PP
+Read symbol handles special symbol types.
+.PP
+\fBReturns: \fP
+.in +1c
+data of symbol. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol.\fP\fP
+.SS "bool ScriptSymbol::removeSymbol (Symbol * sym, const char * value)"
+.PP
+Remove entry from a queue.
+.PP
+\fBReturns: \fP
+.in +1c
+false if invalid. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+object to remove from. 
+.TP
+\fB\fIdata\fP\fP
+value to find and remove. 
+.SS "bool ScriptSymbol::setAlias (const char * symbol, const char * source)"
+.PP
+Set an alias.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to alias. 
+.TP
+\fB\fIvalue\fP\fP
+of alias to set. 
+.PP
+\fBReturns: \fP
+.in +1c
+bool if not set, else value. 
+.SS "char* ScriptSymbol::setConst (const char * symbol, const char * value = '')"
+.PP
+Set a constant value.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to find. 
+.TP
+\fB\fIvalue\fP\fP
+string to set. 
+.PP
+\fBReturns: \fP
+.in +1c
+NULL if not found, else value. 
+.SS "bool ScriptSymbol::setPointer (const char * symbol, void * data)"
+.PP
+Set an embedded pointer object as a symbol.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name. 
+.TP
+\fB\fIdata\fP\fP
+pointer to save. 
+.PP
+\fBReturns: \fP
+.in +1c
+true if successful. 
+.SS "char* ScriptSymbol::setSymbol (const char * symbol, int size = 0)"
+.PP
+Create a new symbol entry of a specified size.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to create. 
+.TP
+\fB\fIsize\fP\fP
+of symbol, otherwise default size used. 
+.TP
+\fB\fIbuffer\fP\fP
+or NULL if exists. 
+.SS "char* ScriptSymbol::setSymbol (const char * symbol, const char * value = '')"
+.PP
+Set a given symbol to a new value.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymbol\fP\fP
+name to find. 
+.TP
+\fB\fIvalue\fP\fP
+string to set. 
+.PP
+\fBReturns: \fP
+.in +1c
+NULL if not found, else value. 
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

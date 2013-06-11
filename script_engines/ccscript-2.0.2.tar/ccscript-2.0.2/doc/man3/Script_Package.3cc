@@ -1,0 +1,49 @@
+.TH "Script::Package" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Script::Package \- A class to represent internal ccScript loaded modules. loaded dso modules. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+.SS "Public Methods"
+
+.in +1c
+.ti -1c
+.RI "\fBPackage\fP (char *name)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Package * \fBnext\fP"
+.br
+.ti -1c
+.RI "char * \fBfilename\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Package * \fBfirst\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+A class to represent internal ccScript loaded modules. loaded dso modules.
+.PP
+These are collected either from 'use' statements embedded in ccScript programs or from implicitly calling Script::use() directly. If the module is not already loaded, then it is created and linked.
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

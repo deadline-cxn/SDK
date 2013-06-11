@@ -1,0 +1,684 @@
+.TH "ScriptInterp" 3 "12 Apr 2002" "ccScript" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ScriptInterp \- System script interpreter core engine class. Extensible Bayonne Scripting Engine. 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <script.h>\fP
+.PP
+Inherits \fBScriptSymbol\fP.
+.PP
+.SS "Public Methods"
+
+.in +1c
+.ti -1c
+.RI "Symbol * \fBgetLocal\fP (const char *name, size_t size=0)"
+.br
+.RI "\fISearch for symbols either thru the virtual global space or thru local space if a local space has been allocated on the heap.\fP"
+.ti -1c
+.RI "bool \fBattach\fP (const char *scrname)"
+.br
+.RI "\fIAttempt to attach script engine to active session and specify a starting script.\fP"
+.ti -1c
+.RI "void \fBdetach\fP (void)"
+.br
+.RI "\fIDetach the current script image.\fP"
+.ti -1c
+.RI "bool \fBredirect\fP (const char *scrname)"
+.br
+.RI "\fIScript redirection support.\fP"
+.ti -1c
+.RI "bool \fBstep\fP (const char *trapname=NULL)"
+.br
+.RI "\fIExecute the next pending script statement.\fP"
+.ti -1c
+.RI "bool \fBisActive\fP (void)"
+.br
+.RI "\fITest if script interpreter is currently active.\fP"
+.ti -1c
+.RI "char * \fBgetOption\fP (const char *def=NULL)"
+.br
+.RI "\fIFetch next logical option but do not evaluate.\fP"
+.ti -1c
+.RI "char * \fBgetKeyword\fP (const char *keyword)"
+.br
+.RI "\fIFetch an embedded attribute keyword argument.\fP"
+.ti -1c
+.RI "int \fBinitKeywords\fP (int size)"
+.br
+.RI "\fIInitialize symbols from the keyword list.\fP"
+.ti -1c
+.RI "char * \fBgetValue\fP (const char *def=NULL)"
+.br
+.RI "\fIFetch and evaluate next logical option.\fP"
+.ti -1c
+.RI "char * \fBgetContent\fP (char *sym)"
+.br
+.RI "\fIEvaluate the content of an option retrieved with getOption.\fP"
+.ti -1c
+.RI "Line * \fBgetScript\fP (void)"
+.br
+.RI "\fIReturn the current script line object so it may be debugged.\fP"
+.ti -1c
+.RI "const char * \fBgetMember\fP (void)"
+.br
+.RI "\fIReturn the member id of a script command.\fP"
+.ti -1c
+.RI "Name * \fBgetObject\fP (void)"
+.br
+.RI "\fIReturn the master script object for resource context.\fP"
+.ti -1c
+.RI "\fBScriptImage\fP * \fBgetImage\fP (void)"
+.br
+.RI "\fIReturn the script image holding this application's context.\fP"
+.ti -1c
+.RI "void \fBautoloop\fP (bool enable)"
+.br
+.RI "\fIEnable or disable autolooping of statements.\fP"
+.in -1c
+.SS "Protected Methods"
+
+.in +1c
+.ti -1c
+.RI "\fBScriptInterp\fP (\fBScriptCommand\fP *cmd, size_t symsize, size_t pgsize=1024)"
+.br
+.RI "\fIDerive a new instance of the system script interpreter.\fP"
+.ti -1c
+.RI "\fB~ScriptInterp\fP ()"
+.br
+.ti -1c
+.RI "void \fBgetTrigger\fP (bool use)"
+.br
+.RI "\fIGet a local and/or global trigger.\fP"
+.ti -1c
+.RI "bool \fBgetOnce\fP (void)"
+.br
+.RI "\fIFetch unique 'once' flag and set.\fP"
+.ti -1c
+.RI "void \fBNotify\fP (unsigned long mask)"
+.br
+.RI "\fINotify signal mask for 'on' handlers.\fP"
+.ti -1c
+.RI "void \fBNotify\fP (const char *str)"
+.br
+.RI "\fINotify signal by symbolic name.\fP"
+.ti -1c
+.RI "unsigned long \fBgetMask\fP (void)"
+.br
+.RI "\fIFetch the current interpreter mask bits directly.\fP"
+.ti -1c
+.RI "unsigned long \fBgetScriptMask\fP (const char *id)"
+.br
+.RI "\fIFetch the script mask identifer.\fP"
+.ti -1c
+.RI "\fBScriptCommand\fP * \fBgetCommand\fP (void)"
+.br
+.RI "\fIFetch the active command interpreter subsystem.\fP"
+.ti -1c
+.RI "bool \fBconditional\fP (void)"
+.br
+.RI "\fIUsed to process 'conditional' arguments such as for IF/DO/LOOP statements.\fP"
+.ti -1c
+.RI "bool \fBscrExit\fP (void)"
+.br
+.RI "\fISome systems can derive alternative 'exit' commands which can call this routine after performing other operations.\fP"
+.ti -1c
+.RI "bool \fBscrGoto\fP (void)"
+.br
+.RI "\fIThis is often called to process branching requests.\fP"
+.ti -1c
+.RI "bool \fBscrData\fP (void)"
+.br
+.RI "\fIMethod used to encode 'data' lines.\fP"
+.ti -1c
+.RI "virtual unsigned \fBgetId\fP (void)"
+.br
+.RI "\fIUsed to return channel identifiers in some systems.\fP"
+.ti -1c
+.RI "virtual bool \fBgetGlobalTrap\fP (unsigned id)"
+.br
+.RI "\fIUsed to fetch a global trap execution context branch.\fP"
+.ti -1c
+.RI "Symbol * \fBgetVariable\fP (size_t size=0)"
+.br
+.RI "\fIFetch a variable (symbol) that will be used to store data.\fP"
+.ti -1c
+.RI "virtual Symbol * \fBgetIndirect\fP (char *sym)"
+.br
+.RI "\fIMay be used to override processing of indirect content requests.\fP"
+.ti -1c
+.RI "void \fBadvance\fP (void)"
+.br
+.RI "\fIAdvance program to the next script statement.\fP"
+.ti -1c
+.RI "void \fBerror\fP (const char *error)"
+.br
+.RI "\fISet error variable and advance to either the error handler or next script statement.\fP"
+.ti -1c
+.RI "void \fBtrap\fP (unsigned id)"
+.br
+.RI "\fISet the execution interpreter to a trap identifier.\fP"
+.ti -1c
+.RI "void \fBtrap\fP (const char *trapname)"
+.br
+.RI "\fISelect trap by symbolic name and execute if found, else advance to next script step (unless exit trap).\fP"
+.ti -1c
+.RI "bool \fBpush\fP (void)"
+.br
+.RI "\fIAttempt to push a value onto the stack.\fP"
+.ti -1c
+.RI "bool \fBpull\fP (void)"
+.br
+.RI "\fIAttempt to recall a previous stack level.\fP"
+.ti -1c
+.RI "bool \fBsignal\fP (const char *trapname)"
+.br
+.RI "\fISignals are used during 'delayed' execution steps when a signal event has occured aynchronously with the execution of a script controlled state event handler.\fP"
+.ti -1c
+.RI "bool \fBsignal\fP (unsigned trapid)"
+.br
+.RI "\fISignals can be referenced by numeric id as well as by symbolic name.\fP"
+.ti -1c
+.RI "virtual bool \fBexecute\fP (Method method)"
+.br
+.RI "\fIRuntime execution of script handler.\fP"
+.ti -1c
+.RI "virtual void \fBstop\fP (unsigned long mask)"
+.br
+.RI "\fIStop request handler.\fP"
+.ti -1c
+.RI "virtual void \fBexit\fP (void)=0"
+.br
+.RI "\fIExit request handler.\fP"
+.ti -1c
+.RI "virtual Name * \fBgetScriptImage\fP (const char *label)"
+.br
+.RI "\fIRuntime branch point for label selection.\fP"
+.ti -1c
+.RI "Name * \fBgetScriptCopy\fP (const char *src)"
+.br
+.RI "\fIFetch duplicative script image as needed.\fP"
+.ti -1c
+.RI "virtual void \fBsleepScheduler\fP (timeout_t timeout)"
+.br
+.RI "\fIPatch point for sleep delay notification.\fP"
+.ti -1c
+.RI "virtual void \fBstepScheduler\fP (const char *trapname)"
+.br
+.RI "\fIStep scheduler callback to force step execution.\fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBScriptImage\fP"
+.br
+.ti -1c
+.RI "class \fBScript::Session\fP"
+.br
+.ti -1c
+.RI "class \fBScriptModule\fP"
+.br
+.ti -1c
+.RI "class \fBScriptCommand\fP"
+.br
+.in -1c
+.SH "DETAILED DESCRIPTION"
+.PP 
+System script interpreter core engine class. Extensible Bayonne Scripting Engine.
+.PP
+This class is further derived to impliment application specific language dialects.
+.PP
+\fBAuthor: \fP
+.in +1c
+David Sugar <dyfet@ostel.com> 
+.PP
+.SH "CONSTRUCTOR & DESTRUCTOR DOCUMENTATION"
+.PP 
+.SS "ScriptInterp::ScriptInterp (\fBScriptCommand\fP * cmd, size_t symsize, size_t pgsize = 1024)\fC [protected]\fP"
+.PP
+Derive a new instance of the system script interpreter.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsymsize\fP\fP
+for default symbol sizing. 
+.TP
+\fB\fIpgsize\fP\fP
+for memory fragmentation. 
+.SH "MEMBER FUNCTION DOCUMENTATION"
+.PP 
+.SS "bool ScriptInterp::attach (const char * scrname)"
+.PP
+Attempt to attach script engine to active session and specify a starting script.
+.PP
+\fBReturns: \fP
+.in +1c
+false if failed to attach. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of script entry. 
+.SS "void ScriptInterp::autoloop (bool enable)\fC [inline]\fP"
+.PP
+Enable or disable autolooping of statements.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fItrue\fP\fP
+to enable autoloop (default). 
+.SS "bool ScriptInterp::conditional (void)\fC [protected]\fP"
+.PP
+Used to process 'conditional' arguments such as for IF/DO/LOOP statements.
+.PP
+The index is kept at the next logical argument so a goto can be performed if needed.
+.PP
+\fBReturns: \fP
+.in +1c
+true if conditional test is true. 
+.SS "void ScriptInterp::detach (void)"
+.PP
+Detach the current script image.
+.PP
+If it is the last ref count and the exit flag is set, then delete it. 
+.SS "void ScriptInterp::error (const char * error)\fC [protected]\fP"
+.PP
+Set error variable and advance to either the error handler or next script statement.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIerror\fP\fP
+message. 
+.SS "virtual bool ScriptInterp::execute (Method method)\fC [inline, protected, virtual]\fP"
+.PP
+Runtime execution of script handler.
+.PP
+This can be called in the current or derived class to invoke extensible methods.
+.PP
+\fBReturns: \fP
+.in +1c
+true if immediately ready for next step. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIderived\fP\fP
+method to call. 
+.SS "virtual void ScriptInterp::exit (void)\fC [protected, pure virtual]\fP"
+.PP
+Exit request handler.
+.PP
+This is called when no script line exists. No default behavior is known. 
+.SS "\fBScriptCommand\fP* ScriptInterp::getCommand (void)\fC [inline, protected]\fP"
+.PP
+Fetch the active command interpreter subsystem.
+.PP
+\fBReturns: \fP
+.in +1c
+script interpreter. 
+.SS "char* ScriptInterp::getContent (char * sym)"
+.PP
+Evaluate the content of an option retrieved with getOption.
+.PP
+\fBReturns: \fP
+.in +1c
+value of evaluation. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIoption\fP\fP
+string. 
+.SS "virtual bool ScriptInterp::getGlobalTrap (unsigned id)\fC [inline, protected, virtual]\fP"
+.PP
+Used to fetch a global trap execution context branch.
+.PP
+\fBReturns: \fP
+.in +1c
+true if external global trap handler found. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fItrap\fP\fP
+identifier. 
+.SS "virtual unsigned ScriptInterp::getId (void)\fC [inline, protected, virtual]\fP"
+.PP
+Used to return channel identifiers in some systems.
+.PP
+\fBReturns: \fP
+.in +1c
+channel id or 0 for none. 
+.SS "\fBScriptImage\fP* ScriptInterp::getImage (void)\fC [inline]\fP"
+.PP
+Return the script image holding this application's context.
+.PP
+\fBReturns: \fP
+.in +1c
+script image. 
+.SS "virtual Symbol* ScriptInterp::getIndirect (char * sym)\fC [inline, protected, virtual]\fP"
+.PP
+May be used to override processing of indirect content requests.
+.PP
+This is used in the Bayonne IVR to fetch content constants based on language and country settings.
+.PP
+\fBReturns: \fP
+.in +1c
+symbol for indirect content. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIindirect\fP\fP
+fetch request. 
+.SS "char* ScriptInterp::getKeyword (const char * keyword)"
+.PP
+Fetch an embedded attribute keyword argument.
+.PP
+This allows embedded tag=value keywords to be extracted.
+.PP
+\fBReturns: \fP
+.in +1c
+option or NULL if not found. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIkeyword\fP\fP
+to find. 
+.SS "Symbol* ScriptInterp::getLocal (const char * name, size_t size = 0)"
+.PP
+Search for symbols either thru the virtual global space or thru local space if a local space has been allocated on the heap.
+.PP
+\fBReturns: \fP
+.in +1c
+symbol found. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIscript\fP\fP
+symbol to look for or create. 
+.TP
+\fB\fIsize\fP\fP
+of symbol to allocate. 
+.SS "unsigned long ScriptInterp::getMask (void)\fC [protected]\fP"
+.PP
+Fetch the current interpreter mask bits directly.
+.PP
+\fBReturns: \fP
+.in +1c
+interpreter mask. 
+.SS "const char* ScriptInterp::getMember (void)"
+.PP
+Return the member id of a script command.
+.PP
+\fBReturns: \fP
+.in +1c
+member id or NULL if none. 
+.SS "Name* ScriptInterp::getObject (void)\fC [inline]\fP"
+.PP
+Return the master script object for resource context.
+.PP
+\fBReturns: \fP
+.in +1c
+script object being executed. 
+.SS "bool ScriptInterp::getOnce (void)\fC [protected]\fP"
+.PP
+Fetch unique 'once' flag and set.
+.PP
+\fBReturns: \fP
+.in +1c
+true if once. 
+.SS "char* ScriptInterp::getOption (const char * def = NULL)"
+.PP
+Fetch next logical option but do not evaluate.
+.PP
+The index is advanced.
+.PP
+\fBReturns: \fP
+.in +1c
+option or NULL if end of list. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIoptional\fP\fP
+default. 
+.SS "Line* ScriptInterp::getScript (void)\fC [inline]\fP"
+.PP
+Return the current script line object so it may be debugged.
+.PP
+\fBReturns: \fP
+.in +1c
+script image record being executed. 
+.SS "Name* ScriptInterp::getScriptCopy (const char * src)\fC [protected]\fP"
+.PP
+Fetch duplicative script image as needed.
+.PP
+\fBReturns: \fP
+.in +1c
+script object. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIlabel\fP\fP
+to dup. 
+.SS "virtual Name* ScriptInterp::getScriptImage (const char * label)\fC [protected, virtual]\fP"
+.PP
+Runtime branch point for label selection.
+.PP
+\fBReturns: \fP
+.in +1c
+script found. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIlabel\fP\fP
+to locate. 
+.TP
+\fB\fIscript\fP\fP
+line associated. 
+.SS "unsigned long ScriptInterp::getScriptMask (const char * id)\fC [inline, protected]\fP"
+.PP
+Fetch the script mask identifer.
+.PP
+\fBReturns: \fP
+.in +1c
+script mask. 
+.SS "void ScriptInterp::getTrigger (bool use)\fC [protected]\fP"
+.PP
+Get a local and/or global trigger.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIuse\fP\fP
+or clear. 
+.SS "char* ScriptInterp::getValue (const char * def = NULL)"
+.PP
+Fetch and evaluate next logical option.
+.PP
+If a symbol ref. then the symbol is also expressed. The index is advanced.
+.PP
+\fBReturns: \fP
+.in +1c
+option value or NULL if end of list. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIoptional\fP\fP
+default value. 
+.SS "Symbol* ScriptInterp::getVariable (size_t size = 0)\fC [protected]\fP"
+.PP
+Fetch a variable (symbol) that will be used to store data.
+.PP
+This advances the index.
+.PP
+\fBReturns: \fP
+.in +1c
+symbol found if any. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIoptional\fP\fP
+size to allocate if new symbol. 
+.SS "bool ScriptInterp::isActive (void)\fC [inline]\fP"
+.PP
+Test if script interpreter is currently active.
+.PP
+\fBReturns: \fP
+.in +1c
+true if active. 
+.SS "void ScriptInterp::Notify (const char * str)\fC [inline, protected]\fP"
+.PP
+Notify signal by symbolic name.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fImask\fP\fP
+name. 
+.SS "void ScriptInterp::Notify (unsigned long mask)\fC [inline, protected]\fP"
+.PP
+Notify signal mask for 'on' handlers.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fImask\fP\fP
+value. 
+.SS "bool ScriptInterp::pull (void)\fC [protected]\fP"
+.PP
+Attempt to recall a previous stack level.
+.PP
+\fBReturns: \fP
+.in +1c
+false if stack underflow. 
+.SS "bool ScriptInterp::push (void)\fC [protected]\fP"
+.PP
+Attempt to push a value onto the stack.
+.PP
+\fBReturns: \fP
+.in +1c
+false if stack overflow. 
+.SS "bool ScriptInterp::redirect (const char * scrname)"
+.PP
+Script redirection support.
+.PP
+\fBReturns: \fP
+.in +1c
+false if redirect failed. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of script entry. 
+.SS "bool ScriptInterp::signal (unsigned trapid)\fC [protected]\fP"
+.PP
+Signals can be referenced by numeric id as well as by symbolic name.
+.PP
+\fBReturns: \fP
+.in +1c
+true if signal handler is not blocked. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fItrap\fP\fP
+number of handler. 
+.SS "bool ScriptInterp::signal (const char * trapname)\fC [protected]\fP"
+.PP
+Signals are used during 'delayed' execution steps when a signal event has occured aynchronously with the execution of a script controlled state event handler.
+.PP
+This mechanism can be used in place of calling implicit 'Step' traps.
+.PP
+\fBReturns: \fP
+.in +1c
+true if signal handler is not blocked. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of signal identifier. 
+.SS "virtual void ScriptInterp::sleepScheduler (timeout_t timeout)\fC [inline, protected, virtual]\fP"
+.PP
+Patch point for sleep delay notification.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsleep\fP\fP
+timeout expected. 
+.SS "bool ScriptInterp::step (const char * trapname = NULL)"
+.PP
+Execute the next pending script statement.
+.PP
+If no statement is selected, then we execute the exit handler instead. We can also force feed a trap identifier.
+.PP
+\fBReturns: \fP
+.in +1c
+true if advanced to next script statement already. 
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIoptional\fP\fP
+trap branch point (also checks mask). 
+.SS "virtual void ScriptInterp::stepScheduler (const char * trapname)\fC [inline, protected, virtual]\fP"
+.PP
+Step scheduler callback to force step execution.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fItrap\fP\fP
+name to use. 
+.SS "virtual void ScriptInterp::stop (unsigned long mask)\fC [inline, protected, virtual]\fP"
+.PP
+Stop request handler.
+.PP
+Used for handling external trap requests during a 'Signal'. This is needed in some state engines when the current state is being abandoned because of a signaled trap.
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIsignal\fP\fP
+mask forcing stop. 
+.SS "void ScriptInterp::trap (const char * trapname)\fC [protected]\fP"
+.PP
+Select trap by symbolic name and execute if found, else advance to next script step (unless exit trap).
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIname\fP\fP
+of trap to select. 
+.SS "void ScriptInterp::trap (unsigned id)\fC [protected]\fP"
+.PP
+Set the execution interpreter to a trap identifier.
+.PP
+If no trap id exists, then advance to next script statement (unless exit trap).
+.PP
+Parameters: \fP
+.in +1c
+.TP
+\fB\fIid\fP\fP
+of trap to select numerically. 
+
+.SH "AUTHOR"
+.PP 
+Generated automatically by Doxygen for ccScript from the source code.

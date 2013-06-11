@@ -1,0 +1,11 @@
+
+//
+// game include files
+//
+
+INCLUDE "objects1.scr"
+INCLUDE "items1.scr"
+INCLUDE "rooms1.scr"
+INCLUDE "chars1.scr"
+
+
