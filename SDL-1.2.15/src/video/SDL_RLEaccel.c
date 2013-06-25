@@ -72,7 +72,7 @@
  *   For 32-bit targets, each pixel has the target RGB format but with
  *   the alpha value occupying the highest 8 bits. The <skip> and <run>
  *   counts are 16 bit.
- * 
+ *
  *   For 16-bit targets, each pixel has the target RGB format, but with
  *   the middle component (usually green) shifted 16 steps to the left,
  *   and the hole filled with the 5 most significant bits of the alpha value.
@@ -546,7 +546,7 @@ do {							\
     } while(0)
 
 #endif
-    
+
 /*
  * Special case: 50% alpha (alpha=128)
  * This is treated specially because it can be optimized very well, and
@@ -705,7 +705,7 @@ do {							\
     } while(0)
 
 #else
-	
+
 #define CHOOSE_BLIT(blitter, alpha, fmt)				\
     do {								\
         if(alpha == 255) {						\
@@ -1873,7 +1873,7 @@ static SDL_bool UnRLEAlpha(SDL_Surface *surface)
 	/* skip padding if needed */
 	if(bpp == 2)
 	    srcbuf += (uintptr_t)srcbuf & 2;
-	
+
 	/* copy translucent pixels */
 	ofs = 0;
 	do {

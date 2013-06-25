@@ -223,7 +223,7 @@ static void VDI_ReadExtInfo(_THIS, short *work_out)
 	if  (Getcookie(C_EdDI, &cookie_EdDI) == C_NOTFOUND) {
 		return;
 	}
-	
+
 	EdDI_version = Atari_get_EdDI_version( (void *)cookie_EdDI);
 
 	vq_scrninfo(VDI_handle, work_out);
@@ -313,14 +313,14 @@ int GEM_VideoInit(_THIS, SDL_PixelFormat *vformat)
 	GEM_version = aes_global[0];
 	if (GEM_version >= 0x0410) {
 		short ap_gout[4], errorcode;
-		
+
 		GEM_wfeatures=0;
 		errorcode=appl_getinfo(AES_WINDOW, &ap_gout[0], &ap_gout[1], &ap_gout[2], &ap_gout[3]);
 
 		if (errorcode==0) {
-			GEM_wfeatures=ap_gout[0];			
+			GEM_wfeatures=ap_gout[0];
 		}
-	}	
+	}
 
 	/* Ask VDI physical workstation handle opened by AES */
 	VDI_handle = graf_handle(&dummy, &dummy, &dummy, &dummy);
@@ -387,7 +387,7 @@ int GEM_VideoInit(_THIS, SDL_PixelFormat *vformat)
 	} else {
 		VDI_oldnumcolors=1<<VDI_bpp;
 	}
-	
+
 	for(i = 0; i < VDI_oldnumcolors; i++) {
 		short rgb[3];
 
@@ -1138,7 +1138,7 @@ void GEM_VideoQuit(_THIS)
 		SDL_modelist[0]=NULL;
 	}
 
-	this->screen->pixels = NULL;	
+	this->screen->pixels = NULL;
 }
 
 void GEM_wind_redraw(_THIS, int winhandle, short *inside)
@@ -1196,7 +1196,7 @@ static void refresh_window(_THIS, int winhandle, short *rect)
 	if (iconified && GEM_icon) {
 		short icon_rect[4], dst_rect[4];
 		short iconx,icony;
-		
+
 		surface = GEM_icon;
 
 		GEM_ClearRect(this, rect);
@@ -1257,12 +1257,12 @@ static void refresh_window(_THIS, int winhandle, short *rect)
 		/* Redraw all window content */
 		pxy[0] = rect[0]-wind_pxy[0];
 		pxy[1] = rect[1]-wind_pxy[1];
-	 	pxy[2] = rect[2]-wind_pxy[0];   
-	 	pxy[3] = rect[3]-wind_pxy[1];  
+	 	pxy[2] = rect[2]-wind_pxy[0];
+	 	pxy[3] = rect[3]-wind_pxy[1];
 
 		pxy[4] = rect[0];
 		pxy[5] = rect[1];
-		pxy[6] = rect[2];  
+		pxy[6] = rect[2];
 		pxy[7] = rect[3];
 	}
 

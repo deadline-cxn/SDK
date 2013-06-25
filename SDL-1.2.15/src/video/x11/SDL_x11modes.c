@@ -174,9 +174,9 @@ static void set_best_resolution(_THIS, int width, int height)
                 break;
             }
         }
-        
+
         if ( SDL_modelist[i] ) { /* found one, lets try it */
-            int w, h;        
+            int w, h;
 
             /* check current mode so we can avoid uneccessary mode changes */
             get_real_resolution(this, &w, &h);
@@ -187,11 +187,11 @@ static void set_best_resolution(_THIS, int width, int height)
                         "XiGMiscChangeResolution: %d %d\n",
                         SDL_modelist[i]->w, SDL_modelist[i]->h);
 #endif
-                XiGMiscChangeResolution(SDL_Display, 
+                XiGMiscChangeResolution(SDL_Display,
                                         SDL_Screen,
                                         0, /* view */
-                                        SDL_modelist[i]->w, 
-                                        SDL_modelist[i]->h, 
+                                        SDL_modelist[i]->w,
+                                        SDL_modelist[i]->h,
                                         0);
                 XSync(SDL_Display, False);
             }
@@ -451,7 +451,7 @@ static int CheckVidMode(_THIS, int *major, int *minor)
     if ( env && !SDL_atoi(env) ) {
         return 0;
     }
-    
+
     /* Metro-X 4.3.0 and earlier has a broken implementation of
        XF86VidModeGetAllModeLines() - it hangs the client.
      */
@@ -497,7 +497,7 @@ static int CheckXME(_THIS, int *major, int *minor)
     if ( env && !SDL_atoi(env) ) {
         return 0;
     }
-    
+
     /* Query the extension version */
     if ( !XiGMiscQueryVersion(SDL_Display, major, minor) ) {
         return 0;
@@ -767,19 +767,19 @@ int X11_GetVideoModes(_THIS)
             return -1;
         }
         for ( i=0, j=nummodes-1; j>=0; i++, j-- ) {
-            if ((SDL_modelist[i] = 
+            if ((SDL_modelist[i] =
                  (SDL_Rect *)SDL_malloc(sizeof(SDL_Rect))) == NULL)
               break;
 #ifdef X11MODES_DEBUG
             fprintf(stderr, "XME: mode = %4d, w = %4d, h = %4d\n",
                    i, modelist[i].width, modelist[i].height);
 #endif
-            
+
             SDL_modelist[i]->x = 0;
             SDL_modelist[i]->y = 0;
             SDL_modelist[i]->w = modelist[j].width;
             SDL_modelist[i]->h = modelist[j].height;
-            
+
         }
         SDL_modelist[i] = NULL; /* terminator */
 
@@ -825,7 +825,7 @@ int X11_GetVideoModes(_THIS)
             SDL_SetError("Found no sufficiently capable X11 visuals");
             return -1;
         }
-            
+
         /* look up the pixel quantum for each depth */
         pf = XListPixmapFormats(SDL_Display, &np);
         for(i = 0; i < this->hidden->nvisuals; i++) {
@@ -1093,16 +1093,16 @@ int X11_LeaveFullScreen(_THIS)
 
 #if SDL_VIDEO_DRIVER_X11_XME
         if ( use_xme ) {
-            int rw, rh;        
-            
+            int rw, rh;
+
             /* check current mode so we can avoid uneccessary mode changes */
             get_real_resolution(this, &rw, &rh);
 
             if (rw != saved_res.width || rh != saved_res.height) {
-                XiGMiscChangeResolution(SDL_Display, 
+                XiGMiscChangeResolution(SDL_Display,
                                         SDL_Screen,
                                         0, /* view */
-                                        saved_res.width, 
+                                        saved_res.width,
                                         saved_res.height,
                                         0);
                 XSync(SDL_Display, False);
