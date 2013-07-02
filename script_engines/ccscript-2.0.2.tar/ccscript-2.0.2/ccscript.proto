@@ -1,5 +1,0 @@
-i pkginfo
-f none /usr/lib/libccscript-1.0.so.0.0.0=/opt/OSTscript/lib/libccscript-1.0.so.0.0.0 0755 bin bin
-s none /usr/lib/libccscript-1.0.so.0=libccscript-1.0.so.0.0.0
-s none /usr/lib/libccscript.so=libccscript-1.0.so.0.0.0
-f none /usr/include/cc++/script.h=/opt/OSTscript/include/cc++/script.h 0644 bin bin

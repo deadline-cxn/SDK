@@ -2,7 +2,8 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="gif2bmp" />
+		<Option title="bmp2png" />
+		<Option execution_dir="C:/projects/SDK/cximage600_full/gif2bmp/" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -12,9 +13,9 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-O2" />
 					<Add option="-W" />
 					<Add option="-fexceptions" />
-					<Add option="-O2" />
 					<Add option="-DWIN32" />
 					<Add option="-DNDEBUG" />
 					<Add option="-D_CONSOLE" />
@@ -33,6 +34,14 @@
 					<Add library="uuid" />
 					<Add library="odbc32" />
 					<Add library="odbccp32" />
+					<Add library="cximage" />
+					<Add library="tiff" />
+					<Add library="jasper" />
+					<Add library="libdcr" />
+					<Add library="jpeg" />
+					<Add library="mng" />
+					<Add library="png" />
+					<Add library="zlib" />
 				</Linker>
 			</Target>
 			<Target title="Win32 Debug">
@@ -65,7 +74,7 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="gif2bmp.cpp" />
+		<Unit filename="bmp2png.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -1,6 +1,0 @@
-include/cc++/script.h
-lib/libccscript.a
-lib/libccscript.so
-lib/libccscript-@LT_RELEASE@.so.@LT_MAJOR@
-bin/ccscript
-@dirrm share/doc/ccscript

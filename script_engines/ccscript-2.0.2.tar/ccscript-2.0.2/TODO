@@ -1,5 +1,0 @@
-Consider improvements to compile-phase parser.
-
-Perhaps fold Bayonne server DSO loaded ccscript "functions" into ccscript
-package proper.
-
