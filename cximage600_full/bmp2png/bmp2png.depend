@@ -1,5 +1,0 @@
-# depslib dependency file v1.0
-1372774578 source:c:\projects\sdk\cximage600_full\bmp2png\bmp2png.cpp
-	"ximage.h"
-	<stdlib.h>
-

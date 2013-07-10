@@ -1,5 +1,0 @@
-# depslib dependency file v1.0
-1269978398 source:c:\xampp\htdocs\projects\cximage600_full\jpg2bmp\jpg2bmp.cpp
-	"ximage.h"
-	<ostream.h>
-
