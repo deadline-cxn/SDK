@@ -1,0 +1,15 @@
+Basic Installation
+==================
+
+To build the project demo:
+
+ cd path-to-c3ds/
+ ./configure
+ make
+
+to run it:
+
+ cd src/
+ ./c3ds
+
+Have fun!
