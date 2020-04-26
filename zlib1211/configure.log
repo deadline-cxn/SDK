@@ -1,0 +1,60 @@
+--------------------
+./configure
+Fri, Apr 24, 2020  7:02:32 PM
+Checking for gcc...
+=== ztest32812.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c ztest32812.c
+... using gcc
+Please use win32/Makefile.gcc instead.
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure
+Fri, Apr 24, 2020  7:11:01 PM
+Checking for gcc...
+=== ztest10840.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c ztest10840.c
+... using gcc
+Please use win32/Makefile.gcc instead.
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure
+Fri, Apr 24, 2020  7:35:25 PM
+Checking for gcc...
+=== ztest35304.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c ztest35304.c
+... using gcc
+Please use win32/Makefile.gcc instead.
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure
+Fri, Apr 24, 2020  9:38:16 PM
+Checking for gcc...
+=== ztest17040.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c ztest17040.c
+... using gcc
+Please use win32/Makefile.gcc instead.
+** ./configure aborting.
+--------------------
+
+
